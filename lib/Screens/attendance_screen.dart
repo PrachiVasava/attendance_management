@@ -28,16 +28,16 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   double screenHeight = 0;
   double screenWidth = 0;
 
-  late Position _currentPosition;
-
+  Position? _currentPosition;
 
 
 
   final _officeLocation = LocationData.fromMap({
     "latitude": 22.5525,
     "longitude": 72.9238,
+
   }) ;
-  final _maxDistance = 100;
+  final _maxDistance = 1000;
   // in meters
   @override
   void initState() {
@@ -46,7 +46,16 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   }
   void _getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    setState(() {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.denied)
+      {
+        permission = await Geolocator.requestPermission();
+      }
+    if(permission == LocationPermission.denied)
+{
+  return Future.error('Location Permission Denied');
+}
+      setState(() {
       _currentPosition = position;
     });
   }
@@ -60,26 +69,44 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       final distance = Geolocator.distanceBetween(
         _officeLocation.latitude!,
         _officeLocation.longitude!,
-        _currentPosition.latitude,
-        _currentPosition.longitude,
+        _currentPosition!.latitude!,
+        _currentPosition!.longitude,
       );
       if (distance <= _maxDistance) {
         // User is within the allowed distance from the office location
         // Save the attendance data in the database
-        DatabaseReference attendanceRef = FirebaseDatabase.instance.ref().child('attendance');
-        DatabaseReference newAttendanceRef = attendanceRef.push();
-        newAttendanceRef.set({
-          'inTime': DateTime.now().toString(),
-          'outTime': '',
-          'status': 'in',
-          'latitude': _currentPosition.latitude,
-          'longitude': _currentPosition.longitude,
-        });
+        //DatabaseReference attendanceRef = FirebaseDatabase.instance.ref().child('attendance');
+        //DatabaseReference newAttendanceRef = attendanceRef.push();
+        // newAttendanceRef.set({
+        //   'inTime': DateTime.now().toString(),
+        //   'outTime': '',
+        //   'status': 'in',
+        //   'latitude': _currentPosition.latitude,
+        //   'longitude': _currentPosition.longitude,
+        // });
+        try{
+          final databaseRef = FirebaseDatabase.instance.ref().child("attendance");
+          DatabaseReference attendanceRef= databaseRef.push();
+          attendanceRef.set({
+            'inTime': DateTime.now().toString(),
+            'outTime':'',
+            'status': 'in',
+            'latitude': _currentPosition!.latitude,
+            'longitude': _currentPosition!.longitude,
+          });
 
+
+        }
+        catch(e){
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(content:Text(e.toString()) ,);
+        });
+        }
 
       }
       else{
-
         showDialog(
             context: context,
             builder: (context) {
@@ -89,6 +116,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   }
   void _markInAttendance() {
     _markAttendance('in');
+
+
   }
   Future<void> _markOutAttendance() async {
     // Find the last attendance record for the user in the database
@@ -100,9 +129,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   late GoogleMapController _mapController;
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) {
-
     _mapController = controller;
-    _addMarker(LatLng(22.5525, 72.9238), 'Birla Vishvakarma Mahavidyalaya (BVM)');
+    _addMarker(LatLng(22.529480,72.956372), 'Birla Vishvakarma Mahavidyalaya (BVM)');
+
   }
   void _addMarker(LatLng position, String title) {
     final marker = Marker(
@@ -132,10 +161,18 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               elevation: 10,
               child: GoogleMap(
                 onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(22.5525,72.9238),
-                  zoom: 100
+                circles: {
+                  Circle(circleId: CircleId("1",),
+                    radius: 5000
+                  )
+                },
+                myLocationEnabled: true,
 
+                initialCameraPosition: CameraPosition(
+                    target: LatLng(22.529480,72.956372),
+
+                    //target: LatLng(22.5525,72.9238),
+                  zoom: 20
                 ),
                 markers: _markers,
               ),

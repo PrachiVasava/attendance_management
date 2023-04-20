@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +23,12 @@ class _EditProfileState extends State<EditProfile> {
   late DatabaseReference dbRef;
   String? _savedData;
 
+  User? uid;
   @override
   void initState() {
     super.initState();
     _loadSavedData();
-    dbRef = FirebaseDatabase.instance.ref().child('users');
+    dbRef = FirebaseDatabase.instance.ref().child('users').child("$uid");
   }
 
   double screenHeight = 0;

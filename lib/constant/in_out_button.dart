@@ -16,6 +16,7 @@ Widget inOutButton(String buttonText, Color color, Function() callback) {
             onTap: () {
               callback();
             },
+
             child: Center(
               child: Text(buttonText,
                   style: TextStyle(
