@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "672882217789",
+    "project_id": "hrms-a4dd4",
+    "storage_bucket": "hrms-a4dd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672882217789:android:854032325e36cd754f6b54",
+        "android_client_info": {
+          "package_name": "com.example.hrms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672882217789-gq273t6bv80tp622no24bh1nmho1nlgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hrms",
+            "certificate_hash": "0f1aa8533f77dcc9726a0d91c4447c33a35567d4"
+          }
+        },
+        {
+          "client_id": "672882217789-a11l4brgip459q2efbj61s19bp58pu6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY0bO7mtetaQ0357XifgWfb-fMue6wMxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672882217789-a11l4brgip459q2efbj61s19bp58pu6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

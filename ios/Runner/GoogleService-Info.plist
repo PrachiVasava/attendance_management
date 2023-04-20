@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    GoogleSignIn _googleSignIn = GoogleSignIn(
+      ...
+      // The OAuth client id of your app. This is required.
+      clientId: ...,
+      // If you need to authenticate to a backend server, specify its OAuth client. This is optional.
+      serverClientId: ...,
+    );
+	<key>CLIENT_ID</key>
+	<string>672882217789-nrko35tsv42933t8jit6qubg5con37ge.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.672882217789-nrko35tsv42933t8jit6qubg5con37ge</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>672882217789-gq273t6bv80tp622no24bh1nmho1nlgv.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCVuZkL2BIitxpcD5Svm8ZT5xNbaO7mRMA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>672882217789</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.hrms</string>
+	<key>PROJECT_ID</key>
+	<string>hrms-a4dd4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hrms-a4dd4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:672882217789:ios:43c436d904aa81934f6b54</string>
+</dict>
+</plist>

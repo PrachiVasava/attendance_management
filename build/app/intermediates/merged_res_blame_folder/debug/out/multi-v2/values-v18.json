@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Prachi\\.gradle\\caches\\transforms-3\\5d0319590b0753acc8efe09b0c780922\\transformed\\appcompat-1.4.2\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}
