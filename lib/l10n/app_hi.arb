@@ -66,5 +66,24 @@
   "about_us": "हमारे बारे में",
   "settings": "समायोजन",
   "change_language": "भाषा बदलो",
-  "hrms": "एचआरएमएस"
+  "hrms": "एचआरएमएस",
+  "forgot_password": "पासवर्ड भूल गए?",
+  "new_here": "नए यहाँ!!!",
+  "register_now": "अभी रजिस्टर करें",
+  "forgot_string": "अपना ईमेल दर्ज करें और हम आपको पासवर्ड बदलने के लिए लिंक भेजेंगे",
+  "reset_btn": "पासवर्ड बदलें",
+  "password_length": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
+  "register_string": "अपने विवरण के साथ नीचे रजिस्टर करें",
+  "mobile_no": "मोबाइल नंबर",
+  "confirm_password":"पासवर्ड की पुष्टि कीजिये",
+  "please_enter_username": "कृपया उपयोगकर्ता नाम दर्ज करें",
+  "please_enter_mobile_no": "कृपया मोबाइल नंबर दर्ज करें",
+  "please_confirm_password":"कृपया अपने पासवर्ड की पुष्टि करें",
+  "sign_up": "साइन अप करें",
+  "same_password": "पासवर्ड ऊपर जैसा ही होना चाहिए",
+  "already_account": "पहले से खाता है!",
+  "login_here": "यहां लॉगिन करें",
+  "leave_request": "छुट्टी का अनुरोध",
+  "attendance_regularization":"उपस्थिति नियमितीकरण"
+
 }

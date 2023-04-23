@@ -5,17 +5,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hrms/Controller/login_controller.dart';
 import 'package:hrms/Screens/index_homescreen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:hrms/Screens/register_user.dart';
 import 'package:hrms/constant/app_colors.dart';
-import '../classes/forgot_password.dart';
+import 'package:provider/provider.dart';
+import 'forgot_password.dart';
 import '../classes/google_auth_service.dart';
 import '../constant/button_widget.dart';
 import '../constant/language_constants.dart';
 
 class LoginScreen extends StatefulWidget {
   final Function()? onTap;
+
   const LoginScreen({Key? key, this.onTap}) : super(key: key);
 
   @override
@@ -36,66 +39,66 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _passwordError = false;
   String? _errorMessage;
 
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Error'),
-          content: Text(message),
-          actions: [
-            TextButton(
-              child: Text('OK'),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void _showErrorDialog(String message) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text('Error'),
+  //         content: Text(message),
+  //         actions: [
+  //           TextButton(
+  //             child: Text('OK'),
+  //             onPressed: () => Navigator.of(context).pop(),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
-  Future login() async {
-
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState?.save();
-      showDialog(
-          context: context,
-          builder: (context) {
-            return const Center(child: CircularProgressIndicator(),heightFactor: 50,widthFactor: 50,);
-          });
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: _emailController.text.trim(),
-            password: _passController.text.trim());
-
-        Get.to(IndexHomeScreen());
-
-      } on FirebaseAuthException catch (e) {
-        print(e);
-        Navigator.of(context).pop();
-        showDialog(context: context, builder: (context){
-          return AlertDialog(content:Text(e.message.toString()) ,
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('OK'),
-              ),
-            ],);
-        });
-      }
-    } else {
-      setState(() {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(content:Text("Please Enter Email id and password") ,);
-
-            });
-      });
-    }
-  }
+  // Future login() async {
+  //
+  //   if (_formKey.currentState!.validate()) {
+  //     _formKey.currentState?.save();
+  //     showDialog(
+  //         context: context,
+  //         builder: (context) {
+  //           return const Center(child: CircularProgressIndicator(),heightFactor: 50,widthFactor: 50,);
+  //         });
+  //     try {
+  //       await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //           email: _emailController.text.trim(),
+  //           password: _passController.text.trim());
+  //
+  //       Get.to(IndexHomeScreen());
+  //
+  //     } on FirebaseAuthException catch (e) {
+  //       print(e);
+  //       Navigator.of(context).pop();
+  //       showDialog(context: context, builder: (context){
+  //         return AlertDialog(content:Text(e.message.toString()) ,
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Text('OK'),
+  //             ),
+  //           ],);
+  //       });
+  //     }
+  //   } else {
+  //     setState(() {
+  //       showDialog(
+  //           context: context,
+  //           builder: (context) {
+  //             return AlertDialog(content:Text("Please Enter Email id and password") ,);
+  //
+  //           });
+  //     });
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -147,8 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                   alignment: Alignment.center,
                   width: screenWidth,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: screenWidth / 12),
+                  margin: EdgeInsets.symmetric(horizontal: screenWidth / 12),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,8 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (!RegExp(
                                     r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
                                 .hasMatch(value)) {
-                              return translation(context)
-                                  .valid_email_address;
+                              return translation(context).valid_email_address;
                             }
                             return null;
                           },
@@ -198,25 +199,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                     .please_enter_password;
                               }
                               if (value.length < 6) {
-                                return "Password must be at least 6 characters long";
+                                return translation(context).password_length;
                               }
-                              // if(!_passwordError){
-                              //   return "wrong password";
-                              // }
+
                               return null;
                             },
                             decoration: InputDecoration(
                               labelText: translation(context).password,
-                              errorText: _passwordError
-                                  ? 'Incorrect password'
-                                  : null,
+                              errorText:
+                                  _passwordError ? 'Incorrect password' : null,
                               prefixIcon: Icon(
                                 Icons.lock,
                                 color: AppColors.primary,
                               ),
                               suffixIcon: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
                                 child: GestureDetector(
                                   onTap: _toggleObscureText,
                                   child: Icon(
@@ -243,108 +240,58 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return ForgotPassword();
-                      }));
-                    },
-                      child: Text("Forget Password?",style: TextStyle(color: AppColors.blue),)),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ForgotPassword();
+                        }));
+                      },
+                      child: Text(
+                        translation(context).forgot_password,
+                        style: TextStyle(color: AppColors.blue),
+                      )),
                 ],
               ),
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-            ButtonWidget(
-                text: translation(context).loginbtn,
-                onClicked: login,
-                color: AppColors.primary),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Divider(
-                      thickness: 0.5,
-                      color: AppColors.grey,
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        "or continue with",
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                        child: Divider(
-                      thickness: 0.5,
-                      color: AppColors.grey,
-                    ))
-                  ],
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () => GoogleAuthService().signInWithGoogle(),
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.white),
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.grey.shade200),
-                    child: Image.asset(
-                      'assets/images/google.png',
-                      height: 50,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                GestureDetector(
-                  //onTap: () => GoogleAuthService().signInWithApple(),
-                  child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.white),
-                          borderRadius: BorderRadius.circular(16),
-                          color: Colors.grey.shade200),
-                      child: Image.asset(
-                        'assets/images/apple.png',
-                        height: 50,
-                      )),
-                )
-              ],
+            ChangeNotifierProvider(
+              create: (_) => LoginController(),
+              child: Consumer<LoginController>(
+                builder: (context, provider, child) {
+                  return ButtonWidget(
+                      text: translation(context).loginbtn,
+                      onClicked: () {
+                        if (_formKey.currentState!.validate()) {
+                          provider.login(_emailController.text,
+                              _passController.text.toString());
+                        }
+                      },
+                      color: AppColors.primary);
+                },
+              ),
             ),
             const SizedBox(
-              height: 20,
+              height: 80,
             ),
             Center(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      style: TextStyle(color: AppColors.grey, fontSize: 18),
-                      'New here!! ',
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => const RegisterUser());
-                      },
-                      child: Text(
-                        style:
-                            TextStyle(color: AppColors.blue, fontSize: 18),
-                        'Register Now? ',
-                      ),
-                    ),
-                  ]),
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text(
+                  style: TextStyle(color: AppColors.grey, fontSize: 18),
+                  translation(context).new_here,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const RegisterUser());
+                  },
+                  child: Text(
+                    style: TextStyle(color: AppColors.blue, fontSize: 18),
+                    translation(context).register_now,
+                  ),
+                ),
+              ]),
             ),
           ],
         ),

@@ -501,11 +501,119 @@ abstract class AppLocalizations {
   /// **'Change Language'**
   String get change_language;
 
-  /// No description provided for @about.
+  /// No description provided for @forgot_password.
   ///
   /// In en, this message translates to:
-  /// **'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'**
-  String get about;
+  /// **'Forgot Password?'**
+  String get forgot_password;
+
+  /// No description provided for @new_here.
+  ///
+  /// In en, this message translates to:
+  /// **'New Here!!!'**
+  String get new_here;
+
+  /// No description provided for @register_now.
+  ///
+  /// In en, this message translates to:
+  /// **'Register now'**
+  String get register_now;
+
+  /// No description provided for @forgot_string.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your Email and we will send you a password resend link'**
+  String get forgot_string;
+
+  /// No description provided for @reset_btn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_btn;
+
+  /// No description provided for @hrms.
+  ///
+  /// In en, this message translates to:
+  /// **'HRMS'**
+  String get hrms;
+
+  /// No description provided for @password_length.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters long'**
+  String get password_length;
+
+  /// No description provided for @register_string.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Below With Your Details!'**
+  String get register_string;
+
+  /// No description provided for @mobile_no.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get mobile_no;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @please_enter_username.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Username'**
+  String get please_enter_username;
+
+  /// No description provided for @please_enter_mobile_no.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Mobile Number'**
+  String get please_enter_mobile_no;
+
+  /// No description provided for @please_confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Confirm Your Password'**
+  String get please_confirm_password;
+
+  /// No description provided for @sign_up.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get sign_up;
+
+  /// No description provided for @same_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be same as above'**
+  String get same_password;
+
+  /// No description provided for @already_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have account!'**
+  String get already_account;
+
+  /// No description provided for @login_here.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Here'**
+  String get login_here;
+
+  /// No description provided for @leave_request.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Request'**
+  String get leave_request;
+
+  /// No description provided for @attendance_regularization.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance Regularization'**
+  String get attendance_regularization;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

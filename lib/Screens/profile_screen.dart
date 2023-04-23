@@ -1,17 +1,18 @@
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hrms/Controller/Session_controller.dart';
 import 'package:hrms/Screens/login_screen.dart';
-import 'package:hrms/constant/button_widget.dart';
+import 'package:hrms/Controller/profile_controller.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../classes/language_dropdown.dart';
 import '../constant/app_colors.dart';
 import '../constant/language_constants.dart';
 import '../main.dart';
-import '../services/users.dart';
-import 'edit_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -21,10 +22,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final user = FirebaseAuth.instance.currentUser!;
   double screenHeight = 0;
   double screenWidth = 0;
-  final dbRef =FirebaseDatabase.instance.ref().child('users');
+  String username = '';
+  String mobile = '';
+  String email = '';
+  String birthdate = '';
+  String image = '';
+  final DatabaseReference inRef = FirebaseDatabase.instance.ref("users");
+  final DatabaseReference outRef = FirebaseDatabase.instance.ref("users");
+
 
 
   @override
@@ -75,284 +82,239 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
         body: SingleChildScrollView(
-          child: SafeArea(
-            child: Column(children: [
-
-              FirebaseAnimatedList(
-                  query: dbRef,
-                  shrinkWrap: true,
-                  itemBuilder: (context,snapshot,animation,index){
-                    return Card(
-                      elevation: 10,
-                      margin: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+          child: ChangeNotifierProvider(
+            create: (_) => ProfileController(),
+            child: Consumer<ProfileController>(
+              builder: (context, provider, child) {
+                return SafeArea(
+                    child: StreamBuilder(
+                  stream:
+                      inRef.child(SessionController().userId.toString()).onValue,
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.data.snapshot.value == null) {
+                    return Container(
+                      width: screenWidth,
+                      height: screenHeight,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ListTile(
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 10),
-                            horizontalTitleGap: 20,
-                            leading: Container(
-                              height: screenHeight,
-                              width: 80,
-                              alignment: Alignment.center,
-                              child: CircleAvatar(
-                                  radius: 100,
-                                  child:
-                                  Image(
-                                    image: const AssetImage(
-                                      "assets/images/profile.png",
-                                    ),
-                                    color: AppColors.white,
-                                  )),
-                            ),
-                            title: Row(
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                      text: 'Username: '.toUpperCase(),
-                                      style: TextStyle(
-                                        color: AppColors.grey,
-                                      ),
-                                      children: [
-                                        TextSpan(
-                                            text: snapshot.child('userName').value.toString(),
-                                            style: TextStyle(
-                                                color: AppColors.black,
-                                                fontWeight:
-                                                FontWeight.bold))
-                                      ]),
-                                ),
-                              ],
-                            ),
-                            subtitle: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-                                          text: 'Mobile Number: ',
-                                          style: TextStyle(
-                                              color: AppColors.grey,
-                                              fontSize: 15),
-                                          children: [
-                                            TextSpan(
-                                                text: snapshot.child('mobileNumber').value.toString(),
-                                                style: TextStyle(
-                                                    color: AppColors.black,
-                                                    fontWeight:
-                                                    FontWeight.bold))
-                                          ]),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-                                          text: 'Email : ',
-                                          style: TextStyle(
-                                              color: AppColors.grey,
-                                              fontSize: 15),
-                                          children: [
-                                            TextSpan(
-                                                text: snapshot.child('email').value.toString(),
-                                                style: TextStyle(
-                                                    color: AppColors.black,
-                                                    fontWeight:
-                                                    FontWeight.bold))
-                                          ]),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-                                          text: ' Birthdate : ',
-                                          style: TextStyle(
-                                              color: AppColors.grey,
-                                              fontSize: 15),
-                                          children: [
-                                            TextSpan(
-                                                text: snapshot.child('dob').value.toString(),
-                                                style: TextStyle(
-                                                    color: AppColors.black,
-                                                    fontWeight:
-                                                    FontWeight.bold))
-                                          ]),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 80, right: 80),
-                            child: ButtonWidget(
-                                text: "Edit Profile",
-                                onClicked: () {
-                                  Get.to(() =>  EditProfile());
-                                },
-                                color: AppColors.blue),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          Text("No attendance data found for user".toUpperCase(),style: TextStyle(fontSize: 20,),textAlign: TextAlign.center),
                         ],
                       ),
                     );
-                    
-                  }),
-              // Card(
-              //   elevation: 10,
-              //   margin: const EdgeInsets.all(10),
-              //   shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20)),
-              //   child: Column(
-              //     children: [
-              //       ListTile(
-              //         contentPadding: const EdgeInsets.symmetric(
-              //             horizontal: 10, vertical: 10),
-              //         horizontalTitleGap: 20,
-              //         leading: Container(
-              //           height: screenHeight,
-              //           width: 80,
-              //           alignment: Alignment.center,
-              //           child: CircleAvatar(
-              //               radius: 100,
-              //               child:
-              //               Image(
-              //                 image: const AssetImage(
-              //                   "assets/images/profile.png",
-              //                 ),
-              //                 color: AppColors.white,
-              //               )),
-              //         ),
-              //         title: Row(
-              //           children: [
-              //             RichText(
-              //               text: TextSpan(
-              //                   text: 'Username: '.toUpperCase(),
-              //                   style: TextStyle(
-              //                       color: AppColors.grey,
-              //                       ),
-              //                   children: [
-              //                     TextSpan(
-              //                         text: 'uname',
-              //                         style: TextStyle(
-              //                             color: AppColors.black,
-              //                             fontWeight:
-              //                             FontWeight.bold))
-              //                   ]),
-              //             ),
-              //           ],
-              //         ),
-              //         subtitle: Column(
-              //           children: [
-              //             Row(
-              //               children: [
-              //                 RichText(
-              //                   text: TextSpan(
-              //                       text: 'Mobile Number: ',
-              //                       style: TextStyle(
-              //                           color: AppColors.grey,
-              //                           fontSize: 15),
-              //                       children: [
-              //                         TextSpan(
-              //                             text: "mobile",
-              //                             style: TextStyle(
-              //                                 color: AppColors.black,
-              //                                 fontWeight:
-              //                                 FontWeight.bold))
-              //                       ]),
-              //                 ),
-              //               ],
-              //             ),
-              //             Row(
-              //               children: [
-              //                 RichText(
-              //                   text: TextSpan(
-              //                       text: 'Email : ',
-              //                       style: TextStyle(
-              //                           color: AppColors.grey,
-              //                           fontSize: 15),
-              //                       children: [
-              //                         TextSpan(
-              //                             text: "email",
-              //                             style: TextStyle(
-              //                                 color: AppColors.black,
-              //                                 fontWeight:
-              //                                 FontWeight.bold))
-              //                       ]),
-              //                 ),
-              //               ],
-              //             ),
-              //             Row(
-              //               children: [
-              //                 RichText(
-              //                   text: TextSpan(
-              //                       text: ' Birthdate : ',
-              //                       style: TextStyle(
-              //                           color: AppColors.grey,
-              //                           fontSize: 15),
-              //                       children: [
-              //                         TextSpan(
-              //                             text: "dob",
-              //                             style: TextStyle(
-              //                                 color: AppColors.black,
-              //                                 fontWeight:
-              //                                 FontWeight.bold))
-              //                       ]),
-              //                 ),
-              //               ],
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //       Padding(
-              //         padding: const EdgeInsets.only(left: 80, right: 80),
-              //         child: ButtonWidget(
-              //             text: "Edit Profile",
-              //             onClicked: () {
-              //               Get.to(() =>  EditProfile());
-              //             },
-              //             color: AppColors.blue),
-              //       ),
-              //       const SizedBox(
-              //         height: 20,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    _showDialog(context);
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: 55,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColors.primary),
-                    child: Text(
-                      translation(context).log_out,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: (20),
+                  }
+                  if(!snapshot.hasData){
+                    return Container(
+                      width: screenWidth,
+                      height: screenHeight,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Center(child: CircularProgressIndicator())
+                        ],
                       ),
-                    ),
-                  ),
-                ),
-              ),
-            ]),
+                    );
+                  }
+                  else if (snapshot.hasData) {
+                      Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+                      return Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 20),
+                            Stack(
+                              alignment: Alignment.bottomCenter,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Center(
+                                    child: Container(
+                                      height: 130,
+                                      width: 130,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: AppColors.primary,
+                                            width: 5,
+                                          )),
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child: provider.image == null
+                                              ? map['image'].toString() == ""
+                                                  ? Icon(
+                                                      Icons.person,
+                                                      color: AppColors.primary,
+                                                      size: 100,
+                                                    )
+                                                  : Image(
+                                                      fit: BoxFit.cover,
+                                                      image: NetworkImage(
+                                                        map['image'].toString(),
+                                                      ),
+                                                      loadingBuilder: (context,
+                                                          child,
+                                                          loadingProgress) {
+                                                        if (loadingProgress ==
+                                                            null) return child;
+                                                        return Center(
+                                                          child:
+                                                              CircularProgressIndicator(),
+                                                        );
+                                                      },
+                                                      errorBuilder: (context,
+                                                          object, stack) {
+                                                        return Container(
+                                                          child: Icon(
+                                                            Icons.person,
+                                                            color: AppColors
+                                                                .primary,
+                                                            size: 100,
+                                                          ),
+                                                        );
+                                                      })
+                                              : Stack(
+                                                  children: [
+                                                    Image.file(
+                                                      File(provider.image!.path)
+                                                          .absolute,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                    Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    )
+                                                  ],
+                                                )),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    provider.pickImage(context);
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 12,
+                                    backgroundColor: AppColors.primary,
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 20,
+                                      color: Colors.white70,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            //Text(map['username']),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  RowWidget(
+                                      title: "Username",
+                                      iconData: Icons.person,
+                                      value: map['username'] == ""
+                                          ? "xxxxxxxxx"
+                                          : map['username']),
+                                  RowWidget(
+                                      title: "Mobile Number",
+                                      iconData: Icons.phone_android,
+                                      value: map['mobile'] == ""
+                                          ? "xxx-xxx-xxxx"
+                                          : map['mobile']),
+                                  RowWidget(
+                                      title: "Email",
+                                      iconData: Icons.email,
+                                      value: map['email'] == ""
+                                          ? "xxxxx@xxx.xxx"
+                                          : map['email']),
+                                  // Column(children: [
+                                  //   ListTile(
+                                  //       title: Text("BirthDate"),
+                                  //       leading: IconButton(
+                                  //         icon: Icon( Icons.calendar_month_rounded),
+                                  //         onPressed: () async {
+                                  //     DateTime? pickedDate =
+                                  //         await showDatePicker(
+                                  //       context: context,
+                                  //       initialDate: DateTime.now(),
+                                  //       firstDate: DateTime(1900),
+                                  //       lastDate: DateTime.now(),
+                                  //     );
+                                  //     if (pickedDate != null) {
+                                  //       String formattedDate =
+                                  //           DateFormat('dd-MM-yyyy')
+                                  //               .format(pickedDate);
+                                  //       setState(() {
+                                  //         dobController.text = formattedDate;
+                                  //       });
+                                  //     }
+                                  //   },
+                                  //         color: AppColors.primary,
+                                  //       ),
+                                  //       trailing: Text(map['dob'] == " "
+                                  //           ? "xx/xxxx/xxxx"
+                                  //           : map['dob'])),
+                                  //   Divider(
+                                  //     color:
+                                  //         AppColors.primary.withOpacity(0.4),
+                                  //     indent: 10,
+                                  //     endIndent: 10,
+                                  //   )
+                                  // ]),
+                                  // RowWidget(
+                                  //     title: "Birthdate",
+                                  //     iconData: Icons.calendar_month_rounded,
+                                  //     value: map['dob']== " "
+                                  //         ? "xx/xxxx/xxxx"
+                                  //         : map['dob']),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {
+                                  _showDialog(context);
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: AppColors.primary),
+                                  child: Text(
+                                    translation(context).log_out,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: (20),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ]);
+                    } else {
+                      return Center(
+                          child: Text(
+                        "Something went Wrong",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ));
+                    }
+                  },
+                ));
+              },
+            ),
           ),
         ));
   }
@@ -365,7 +327,7 @@ void _showDialog(BuildContext context) {
       return Center(
         child: Expanded(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.8,
             width: MediaQuery.of(context).size.width,
             child: AlertDialog(
                 shape: const RoundedRectangleBorder(
@@ -398,9 +360,12 @@ void _showDialog(BuildContext context) {
                           ),
                           GestureDetector(
                             onTap: () {
-                              FirebaseAuth.instance.signOut();
+                              FirebaseAuth auth = FirebaseAuth.instance;
+                              auth.signOut().then((value) {
+                                SessionController().userId = "";
+                                Get.off(LoginScreen());
+                              });
                               Navigator.pop(context);
-                              Get.off(LoginScreen());
                             },
                             child: Container(
                               padding: const EdgeInsets.all(17),
@@ -422,4 +387,37 @@ void _showDialog(BuildContext context) {
       );
     },
   );
+}
+
+class RowWidget extends StatelessWidget {
+  final String title, value;
+  final IconData iconData;
+
+  const RowWidget(
+      {Key? key,
+      required this.title,
+      required this.iconData,
+      required this.value})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          title: Text(title),
+          leading: Icon(
+            iconData,
+            color: AppColors.primary,
+          ),
+          trailing: Text(value),
+        ),
+        Divider(
+          color: AppColors.primary.withOpacity(0.4),
+          indent: 10,
+          endIndent: 10,
+        )
+      ],
+    );
+  }
 }

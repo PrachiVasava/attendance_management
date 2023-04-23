@@ -1,10 +1,10 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:hrms/classes/auth_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hrms/constant/language_constants.dart';
+
+import 'Screens/splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,12 +50,14 @@ class _MyAppState extends State<MyApp> {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: _locale,
-      home: AnimatedSplashScreen(
-    splash: 'assets/images/logo.png',
-    nextScreen: const auth_page(),
-    splashIconSize: 200,
-    backgroundColor: Colors.white,
-    splashTransition: SplashTransition.fadeTransition,)
+      home: SplashScreen(),
+
+    //   AnimatedSplashScreen(
+    // splash: 'assets/images/logo.png',
+    // nextScreen: auth_page(),
+    // splashIconSize: 200,
+    // backgroundColor: Colors.white,
+    // splashTransition: SplashTransition.fadeTransition,)
       // KeyboardVisibilityProvider(child: LoginScreen()),
     );
   }

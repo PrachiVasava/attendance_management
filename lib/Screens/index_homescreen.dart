@@ -35,7 +35,7 @@ class _IndexHomeScreenState extends State<IndexHomeScreen> {
         extendBody: true,
         body: IndexedStack(
           index: currentIndex,
-          children: const [HomeScreen(),AttendanceScreen(), ProfileScreen(),],
+          children: [HomeScreen(),AttendanceScreen(), ProfileScreen(),],
         ),
         bottomNavigationBar:
         Container(

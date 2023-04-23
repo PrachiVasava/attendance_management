@@ -209,5 +209,59 @@ class AppLocalizationsEn extends AppLocalizations {
   String get change_language => 'Change Language';
 
   @override
-  String get about => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
+  String get forgot_password => 'Forgot Password?';
+
+  @override
+  String get new_here => 'New Here!!!';
+
+  @override
+  String get register_now => 'Register now';
+
+  @override
+  String get forgot_string => 'Enter your Email and we will send you a password resend link';
+
+  @override
+  String get reset_btn => 'Reset Password';
+
+  @override
+  String get hrms => 'HRMS';
+
+  @override
+  String get password_length => 'Password must be at least 6 characters long';
+
+  @override
+  String get register_string => 'Register Below With Your Details!';
+
+  @override
+  String get mobile_no => 'Mobile number';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get please_enter_username => 'Please Enter Username';
+
+  @override
+  String get please_enter_mobile_no => 'Please Enter Mobile Number';
+
+  @override
+  String get please_confirm_password => 'Please Confirm Your Password';
+
+  @override
+  String get sign_up => 'Sign up';
+
+  @override
+  String get same_password => 'Password must be same as above';
+
+  @override
+  String get already_account => 'Already have account!';
+
+  @override
+  String get login_here => 'Login Here';
+
+  @override
+  String get leave_request => 'Leave Request';
+
+  @override
+  String get attendance_regularization => 'Attendance Regularization';
 }

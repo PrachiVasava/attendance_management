@@ -209,5 +209,59 @@ class AppLocalizationsHi extends AppLocalizations {
   String get change_language => 'भाषा बदलो';
 
   @override
-  String get about => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
+  String get forgot_password => 'पासवर्ड भूल गए?';
+
+  @override
+  String get new_here => 'नए यहाँ!!!';
+
+  @override
+  String get register_now => 'अभी रजिस्टर करें';
+
+  @override
+  String get forgot_string => 'अपना ईमेल दर्ज करें और हम आपको पासवर्ड बदलने के लिए लिंक भेजेंगे';
+
+  @override
+  String get reset_btn => 'पासवर्ड बदलें';
+
+  @override
+  String get hrms => 'एचआरएमएस';
+
+  @override
+  String get password_length => 'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए';
+
+  @override
+  String get register_string => 'अपने विवरण के साथ नीचे रजिस्टर करें';
+
+  @override
+  String get mobile_no => 'मोबाइल नंबर';
+
+  @override
+  String get confirm_password => 'पासवर्ड की पुष्टि कीजिये';
+
+  @override
+  String get please_enter_username => 'कृपया उपयोगकर्ता नाम दर्ज करें';
+
+  @override
+  String get please_enter_mobile_no => 'कृपया मोबाइल नंबर दर्ज करें';
+
+  @override
+  String get please_confirm_password => 'कृपया अपने पासवर्ड की पुष्टि करें';
+
+  @override
+  String get sign_up => 'साइन अप करें';
+
+  @override
+  String get same_password => 'पासवर्ड ऊपर जैसा ही होना चाहिए';
+
+  @override
+  String get already_account => 'पहले से खाता है!';
+
+  @override
+  String get login_here => 'यहां लॉगिन करें';
+
+  @override
+  String get leave_request => 'छुट्टी का अनुरोध';
+
+  @override
+  String get attendance_regularization => 'उपस्थिति नियमितीकरण';
 }

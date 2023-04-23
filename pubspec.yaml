@@ -75,6 +75,10 @@ dependencies:
   image_picker:
   path_provider:
   qr_flutter:
+  fluttertoast:
+  pdf:
+  syncfusion_flutter_pdf:
+
 
 
 

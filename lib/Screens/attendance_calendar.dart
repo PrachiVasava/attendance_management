@@ -30,63 +30,30 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: CustomAppBar(title: "calendar"),
+        appBar: CustomAppBar(title: translation(context).hrms),
         body: SingleChildScrollView(
             child: Center(
                 child: Column(
           children: [
-            //Column(children: [
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 20),
-            //   child: Row(
-            //     children: [
-            //       Container(
-            //         width: screenWidth,
-            //         alignment: Alignment.topCenter,
-            //         child: RichText(
-            //             text: TextSpan(
-            //                 text: "Today's Date: ",
-            //                 style: TextStyle(
-            //                   color: AppColors.black,
-            //                   fontSize: screenWidth / 20,
-            //                 ),
-            //            children:[ TextSpan(
-            //                 text: DateTime.now().day.toString(),
-            //                 style: TextStyle(
-            //                   color: AppColors.primary,
-            //                   fontSize: screenWidth / 18,
-            //                     fontWeight: FontWeight.bold
-            //
-            //                 ),
-            //                 children: [
-            //               TextSpan(
-            //                   text: DateFormat(' MMMM y')
-            //                       .format(DateTime.now()),
-            //                   style: TextStyle(
-            //                       color: Colors.black,
-            //                       fontSize: screenWidth / 20,
-            //                   ))
-            //             ])])),
-            //       ),
-            //       const Spacer(),
-            // StreamBuilder(
-            //     stream: Stream.periodic(const Duration(seconds: 1)),
-            //     builder: (context, snapshot) {
-            //       return Container(
-            //         alignment: Alignment.centerLeft,
-            //         padding: const EdgeInsets.only(right: 20),
-            //         child: Text(
-            //           DateFormat('hh:mm:ss a').format(DateTime.now()),
-            //           style: TextStyle(
-            //             fontSize: screenWidth / 18,
-            //           ),
-            //         ),
-            //       );
-            //     }),
-            //     ],
-            //   ),
-            // ),
-            //]),
+            Container(
+                width: screenWidth,
+                height: screenHeight / 9,
+                padding: EdgeInsets.only(left: 10, right: 10, top: 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      translation(context).calendar.toUpperCase(),
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                )),
             Card(
               elevation: 8,
               // shape: RoundedRectangleBorder(
@@ -275,14 +242,15 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                             color: AppColors.red,
                           ),
                         ),
-                        Text(" - ",
+                        Text(
+                          " - ",
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-
-                        Text("Holiday",
+                        Text(
+                          "Holiday",
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
@@ -292,7 +260,9 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                     ),
                   ],
                 ),
-                SizedBox(width: 50,),
+                SizedBox(
+                  width: 50,
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -307,14 +277,15 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                             color: AppColors.blue,
                           ),
                         ),
-                        Text(" - ",
+                        Text(
+                          " - ",
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-
-                        Text("Today's Date",
+                        Text(
+                          "Today's Date",
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
@@ -324,13 +295,16 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                     ),
                   ],
                 ),
-
               ],
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
-                Container(width: 100,),
+                Container(
+                  width: 100,
+                ),
                 Container(
                   height: 10,
                   width: 40,
@@ -339,14 +313,15 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                     color: AppColors.green,
                   ),
                 ),
-                Text(" - ",
+                Text(
+                  " - ",
                   style: TextStyle(
                     color: AppColors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                Text("Employy Leave",
+                Text(
+                  "Employy Leave",
                   style: TextStyle(
                     color: AppColors.black,
                     fontWeight: FontWeight.bold,
