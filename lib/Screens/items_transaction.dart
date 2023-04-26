@@ -58,7 +58,7 @@ class _ItemTransactionState extends State<ItemTransaction> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
 
-        appBar: CustomAppBar(title: translation(context).item_transaction),
+        appBar: CustomAppBar(),
         body: SafeArea(
             child: SingleChildScrollView(
           child: Form(

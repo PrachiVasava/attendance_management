@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.hrms.app-mergeDebugResources-41:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Prachi\\.gradle\\caches\\transforms-3\\f95310b73584a7fa167075c942d1ba80\\transformed\\jetified-play-services-auth-20.5.0\\res\\values-watch-v20\\values.xml",

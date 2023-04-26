@@ -38,14 +38,13 @@ class PopupItem {
 
   PopupItem(this.value, this.name);
 }
+class Choice {
+  Choice({required this.title, required this.image});
+  String title;
+  final String image;
 
+}
 class _HomeScreenState extends State<HomeScreen> {
-  // final List<String> list = [
-  //   "Attendance",
-  //   "Item Transaction",
-  //   "QR Code",
-  //   "Menu Item"
-  // ];
 
   final DatabaseReference ref = FirebaseDatabase.instance.ref("users");
   double screenHeight = 0;
@@ -56,9 +55,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
+    final myLocalization = translation(context);
+
+    List<Choice> choicesData = [
+      Choice(
+        title: myLocalization.attendance,
+        image: "assets/images/attendance.png",
+      ),
+      Choice(
+        title: myLocalization.attendance_report,
+        image: "assets/images/takeattendance.png",
+      ),
+      Choice(title: myLocalization.leave_request,
+          image: "assets/images/leave_request.png"
+      ),
+      Choice(title: myLocalization.leave_history,
+          image: "assets/images/history.png"
+      ),
+    ];
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -79,9 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child:
               Consumer<ProfileController>(builder: (context, provider, child) {
             return SafeArea(
-                child: SingleChildScrollView(
-                    physics: NeverScrollableScrollPhysics(),
-                    child: StreamBuilder(
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/background.jpg',
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                      width: double.infinity,
+                    ),
+                    StreamBuilder(
                         stream: ref
                             .child(SessionController().userId.toString())
                             .onValue,
@@ -94,146 +116,130 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Center(
-                                      child: CircularProgressIndicator()),
+                                  Center(child: CircularProgressIndicator()),
                                 ],
                               ),
                             );
                           } else if (snapshot.hasData) {
                             Map<dynamic, dynamic> map =
                                 snapshot.data.snapshot.value;
-                            return Container(
-                              height: screenHeight,
-                              width: screenWidth,
-                              //padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: screenHeight / 3 -
-                                        kBottomNavigationBarHeight,
-                                    width: screenWidth,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue[800],
-                                        borderRadius:
-                                            const BorderRadius.vertical(
-                                                bottom: Radius.elliptical(
-                                                    180, 50))),
-                                    child: Center(
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 20),
-                                            child: Container(
-                                              height:120,
-                                              width: 120,
-                                              child: ClipRRect(
-                                                  borderRadius:
-                                                  BorderRadius.circular(100),
-                                                  child: provider.image == null
-                                                      ? map['image'].toString() == ""
-                                                      ? Icon(
-                                                    Icons.person,
-                                                    color: AppColors.white,
-                                                    size: 100,
-                                                  )
-                                                      : Image(
-                                                      fit: BoxFit.cover,
-                                                      image: NetworkImage(
-                                                        map['image'].toString(),
-                                                      ),
-                                                      loadingBuilder: (context,
-                                                          child,
-                                                          loadingProgress) {
-                                                        if (loadingProgress ==
-                                                            null) return child;
-                                                        return Center(
-                                                          child:
-                                                          CircularProgressIndicator(),
-                                                        );
-                                                      },
-                                                      errorBuilder: (context,
-                                                          object, stack) {
-                                                        return Container(
-                                                          child: Icon(
-                                                            Icons.person,
-                                                            color: AppColors
-                                                                .primary,
-                                                            size: 100,
-                                                          ),
-                                                        );
-                                                      })
-                                                      : Stack(
+                            return Column(children: [
+                              Center(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(top: 30),
+                                      child: Container(
+                                        height: 120,
+                                        width: 120,
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                            child: provider.image == null
+                                                ? map['image'].toString() == ""
+                                                    ? Icon(
+                                                        Icons.person,
+                                                        color:
+                                                            AppColors.black,
+                                                        size: 100,
+                                                      )
+                                                    : Image(
+                                                        fit: BoxFit.cover,
+                                                        image: NetworkImage(
+                                                          map['image']
+                                                              .toString(),
+                                                        ),
+                                                        loadingBuilder:
+                                                            (context, child,
+                                                                loadingProgress) {
+                                                          if (loadingProgress ==
+                                                              null)
+                                                            return child;
+                                                          return Center(
+                                                            child:
+                                                                CircularProgressIndicator(),
+                                                          );
+                                                        },
+                                                        errorBuilder:
+                                                            (context,
+                                                                object,
+                                                                stack) {
+                                                          return Container(
+                                                            child: Icon(
+                                                              Icons.person,
+                                                              color: AppColors
+                                                                  .black,
+                                                              size: 100,
+                                                            ),
+                                                          );
+                                                        })
+                                                : Stack(
                                                     children: [
                                                       Image.file(
-                                                        File(provider.image!.path)
+                                                        File(provider.image!
+                                                                .path)
                                                             .absolute,
                                                         fit: BoxFit.cover,
                                                       ),
                                                       Center(
                                                         child:
-                                                        CircularProgressIndicator(),
+                                                            CircularProgressIndicator(),
                                                       )
                                                     ],
                                                   )),
-                                            ),
-                                          ),
-                                          Text(
-                                            translation(context).welcome,
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                          SizedBox(height: 10,),
-                                          Text(map['username'] == ""
-                                              ? "xxxxxxxxx"
-                                              : map['username'],
-                                              textAlign: TextAlign.center,
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20)),
-                                        ],
                                       ),
                                     ),
-                                  ),
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                    height: screenHeight / 1.6,
-                                          width: screenWidth,
-                                          padding: EdgeInsets.only(bottom: 100),
-                                          child: GridView.count(
-                                            shrinkWrap: true,
-                                            crossAxisCount: 2,
-                                            children: List.generate(
-                                                choices.length, (index) {
-                                              return Center(
-                                                child: GestureDetector(
-                                                    onTap: () => tapped(index),
-                                                    child: SelectCard(
-                                                      choice: choices[index],
-                                                    )),
-                                              );
-                                            }),
-                                          ),
-                                        ),
-                                      ],
+                                    Text(
+                                      translation(context).welcome,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppColors.black,
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                        map['username'] == ""
+                                            ? "xxxxxxxxx"
+                                            : map['username'],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 20)),
+                                    SizedBox(height: 30,),
+                                    GridView.count(
+                                      shrinkWrap: true,
+                                      crossAxisCount: 2,
+                                      children: List.generate(
+                                          choicesData.length, (index) {
+                                        return Center(
+                                          child: GestureDetector(
+                                              onTap: () => tapped(index),
+                                              child: SelectCard(
+                                                choice: choicesData[index]
+                                              )),
+                                        );
+                                      }),
+                                    ),
+                                    SizedBox(height: 50,)
+
+                                  ],
+                                ),
+                              )
+                            ]);
                           } else {
                             return Center(
                                 child: Text(
-                              "Something went Wrong",
+                              translation(context).something_went_wrong,
                               style: Theme.of(context).textTheme.titleMedium,
                             ));
                           }
-                        })));
+                        }),
+                  ],
+                ));
           }),
         ));
   }
@@ -247,35 +253,12 @@ class _HomeScreenState extends State<HomeScreen> {
       Get.to(() => LeaveRequest());
     } else if (index == 3) {
       Get.to(() => LeaveHistory());
-    } else if (index == 4) {
-      Get.to(() => AttendanceRegularization());
     }
+    // else if (index == 4) {
+    //   Get.to(() => AttendanceRegularization());
+    // }
   }
 }
-
-class Choice{
-  Choice({required this.title, required this.image});
-
-  String title;
-  final String image;
-}
-
-List<Choice> choices =[
-  Choice(
-    title: "Attendance Calendar",
-    image: "assets/images/attendance.png",
-  ),
-  Choice(
-    title: "Attendance Report",
-    image: "assets/images/takeattendance.png",
-  ),
-  Choice(title: 'Leave Request', image: "assets/images/leave_request.png"),
-  Choice(title: 'Leave History', image: "assets/images/history.png"),
-  Choice(
-      title: 'Attendance Regularization',
-      image: "assets/images/attendance_regularization.png"),
-];
-
 
 
 class SelectCard extends StatelessWidget {
@@ -284,7 +267,6 @@ class SelectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: 180,
       width: 180,

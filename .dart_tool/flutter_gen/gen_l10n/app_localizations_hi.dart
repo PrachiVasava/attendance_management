@@ -264,4 +264,91 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get attendance_regularization => 'उपस्थिति नियमितीकरण';
+
+  @override
+  String get holiday => 'छुट्टी';
+
+  @override
+  String get absent => 'अनुपस्थित';
+
+  @override
+  String get attendance_report => 'उपस्थिति रिपोर्ट';
+
+  @override
+  String get download_pdf => 'पीडीएफ डाउनलोड करें';
+
+  @override
+  String get date => 'तारीख';
+
+  @override
+  String get check_in => 'चेक इन';
+
+  @override
+  String get check_out => 'चेक आउट';
+
+  @override
+  String get leave_type => 'छुट्टी का प्रकार';
+
+  @override
+  String get casual_leave => 'आकस्मिक अवकाश';
+
+  @override
+  String get consolidated_leave => 'समेकित अवकाश';
+
+  @override
+  String get leave_without_pay => 'बिना वेतन के छुट्टी';
+
+  @override
+  String get sick_leave => 'बीमारी की छुट्टी';
+
+  @override
+  String get start_date => 'प्रारंभ तिथि';
+
+  @override
+  String get end_date => 'अंतिम तिथि';
+
+  @override
+  String get day_type => 'दिन का प्रकार';
+
+  @override
+  String get first_half => 'पहली पारी';
+
+  @override
+  String get second_half => 'दूसरी पारी';
+
+  @override
+  String get full_day => 'पूरे दिन';
+
+  @override
+  String get reason_for_leave => 'छुट्टी का कारण';
+
+  @override
+  String get no_attendance_data => 'उपयोगकर्ता के लिए कोई उपस्थिति डेटा नहीं मिला';
+
+  @override
+  String get something_went_wrong => 'कुछ गलत है';
+
+  @override
+  String get valid_mobile_no => 'कृपया मान्य मोबाइल नंबर दर्ज करें';
+
+  @override
+  String get leave_request_sent => 'छुट्टी का अनुरोध सफलतापूर्वक भेजा गया';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get reason => 'वजह';
+
+  @override
+  String get leave_history => 'उपस्थिति इतिहास';
+
+  @override
+  String get not_in_office_location => 'उपयोगकर्ता कार्यालय स्थान से अनुमत दूरी के भीतर नहीं है.';
+
+  @override
+  String get user_checked_in => 'उपयोगकर्ता ने सफलतापूर्वक चेक इन किया है.';
+
+  @override
+  String get user_checked_out => 'उपयोगकर्ता ने सफलतापूर्वक चेक आउट किया है.';
 }

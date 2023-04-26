@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.example.hrms.app-mergeDebugResources-41:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Prachi\\.gradle\\caches\\transforms-3\\f0819b87d34cea1f316842c1a80a9a4f\\transformed\\core-1.9.0\\res\\values-en-rAU\\values-en-rAU.xml",

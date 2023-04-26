@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-hr/values-hr.xml",
+            "outputFile": "com.example.hrms.app-mergeDebugResources-41:/values-hr/values-hr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Prachi\\.gradle\\caches\\transforms-3\\44e87513b92d367064af36bcf452d972\\transformed\\browser-1.4.0\\res\\values-hr\\values-hr.xml",

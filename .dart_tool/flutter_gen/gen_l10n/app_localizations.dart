@@ -614,6 +614,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Attendance Regularization'**
   String get attendance_regularization;
+
+  /// No description provided for @holiday.
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday'**
+  String get holiday;
+
+  /// No description provided for @absent.
+  ///
+  /// In en, this message translates to:
+  /// **'Absent'**
+  String get absent;
+
+  /// No description provided for @attendance_report.
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance Report'**
+  String get attendance_report;
+
+  /// No description provided for @download_pdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Download PDF'**
+  String get download_pdf;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @check_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-In'**
+  String get check_in;
+
+  /// No description provided for @check_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-Out'**
+  String get check_out;
+
+  /// No description provided for @leave_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Type'**
+  String get leave_type;
+
+  /// No description provided for @casual_leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Casual Leave'**
+  String get casual_leave;
+
+  /// No description provided for @consolidated_leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Consolidated Leave'**
+  String get consolidated_leave;
+
+  /// No description provided for @leave_without_pay.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Without Pay'**
+  String get leave_without_pay;
+
+  /// No description provided for @sick_leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Sick Leave'**
+  String get sick_leave;
+
+  /// No description provided for @start_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get start_date;
+
+  /// No description provided for @end_date.
+  ///
+  /// In en, this message translates to:
+  /// **'End Date'**
+  String get end_date;
+
+  /// No description provided for @day_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Day Type'**
+  String get day_type;
+
+  /// No description provided for @first_half.
+  ///
+  /// In en, this message translates to:
+  /// **'First Half'**
+  String get first_half;
+
+  /// No description provided for @second_half.
+  ///
+  /// In en, this message translates to:
+  /// **'Second Half'**
+  String get second_half;
+
+  /// No description provided for @full_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Day'**
+  String get full_day;
+
+  /// No description provided for @reason_for_leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason for Leave'**
+  String get reason_for_leave;
+
+  /// No description provided for @no_attendance_data.
+  ///
+  /// In en, this message translates to:
+  /// **'No attendance data found for user.'**
+  String get no_attendance_data;
+
+  /// No description provided for @something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went Wrong...'**
+  String get something_went_wrong;
+
+  /// No description provided for @valid_mobile_no.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Valid Mobile Number.'**
+  String get valid_mobile_no;
+
+  /// No description provided for @leave_request_sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Request Sent Successfully.'**
+  String get leave_request_sent;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @reason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get reason;
+
+  /// No description provided for @leave_history.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave History'**
+  String get leave_history;
+
+  /// No description provided for @not_in_office_location.
+  ///
+  /// In en, this message translates to:
+  /// **'User is not within the allowed distance from the office location.'**
+  String get not_in_office_location;
+
+  /// No description provided for @user_checked_in.
+  ///
+  /// In en, this message translates to:
+  /// **'User Checked in Successfully.'**
+  String get user_checked_in;
+
+  /// No description provided for @user_checked_out.
+  ///
+  /// In en, this message translates to:
+  /// **'User Checked out Successfully.'**
+  String get user_checked_out;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

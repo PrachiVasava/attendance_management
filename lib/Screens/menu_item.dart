@@ -96,7 +96,6 @@ class _MenuItemScreen extends State<MenuItemScreen> {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: translation(context).menu_item,
       ),
       body: SafeArea(
           child: SingleChildScrollView(

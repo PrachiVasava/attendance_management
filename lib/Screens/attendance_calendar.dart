@@ -30,30 +30,28 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: CustomAppBar(title: translation(context).hrms),
-        body: SingleChildScrollView(
-            child: Center(
-                child: Column(
+        appBar: CustomAppBar(),
+        body: Stack(
           children: [
-            Container(
-                width: screenWidth,
-                height: screenHeight / 9,
-                padding: EdgeInsets.only(left: 10, right: 10, top: 20),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 10,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      translation(context).calendar.toUpperCase(),
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ),
-                )),
+            Image.asset(
+              'assets/images/background.jpg',
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Center(
+                child: Column(
+            children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Text(
+                translation(context).calendar.toUpperCase(),
+                textAlign: TextAlign.center,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: AppColors.white),
+              ),
+            ),
+            SizedBox(height: 20,),
             Card(
               elevation: 8,
               // shape: RoundedRectangleBorder(
@@ -105,27 +103,27 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                     ),
                     //color: Colors.blue
                   ),
-                  todayDecoration: BoxDecoration(color: AppColors.blue),
+                  todayDecoration: BoxDecoration(color: AppColors.primary),
                 ),
                 headerStyle: HeaderStyle(
                   formatButtonVisible: false,
                   titleCentered: true,
                   decoration: BoxDecoration(
-                    color: AppColors.indigo,
+                    color: Colors.white38,
                     //borderRadius: BorderRadius.circular(20),
                   ),
                   titleTextStyle: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                   leftChevronIcon: Icon(
                     Icons.chevron_left,
-                    color: AppColors.white,
+                    color: AppColors.black,
                     size: 28,
                   ),
                   rightChevronIcon: Icon(
                     Icons.chevron_right,
-                    color: AppColors.white,
+                    color: AppColors.black,
                     size: 28,
                   ),
                 ),
@@ -150,8 +148,8 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                               child: SizedBox(
                                 height: 35,
                                 width: screenWidth,
-                                child: const Text(
-                                  'Leave Request',
+                                child: Text(
+                                  translation(context).leave_request,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 18),
                                 ),
@@ -166,8 +164,8 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                               child: SizedBox(
                                 height: 35,
                                 width: screenWidth,
-                                child: const Text(
-                                  'Attendance Regularization',
+                                child: Text(
+                                  translation(context).attendance_regularization,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 18),
                                 ),
@@ -193,8 +191,8 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                               child: SizedBox(
                                 height: 35,
                                 width: screenWidth,
-                                child: const Text(
-                                  'Leave Request',
+                                child: Text(
+                                  translation(context).leave_request,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 18),
                                 ),
@@ -250,7 +248,7 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                           ),
                         ),
                         Text(
-                          "Holiday",
+                          translation(context).holiday,
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
@@ -274,7 +272,7 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: AppColors.blue,
+                            color: AppColors.primary,
                           ),
                         ),
                         Text(
@@ -285,7 +283,7 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                           ),
                         ),
                         Text(
-                          "Today's Date",
+                          translation(context).today_date,
                           style: TextStyle(
                             color: AppColors.black,
                             fontWeight: FontWeight.bold,
@@ -321,7 +319,7 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                   ),
                 ),
                 Text(
-                  "Employy Leave",
+                  translation(context).absent,
                   style: TextStyle(
                     color: AppColors.black,
                     fontWeight: FontWeight.bold,
@@ -329,8 +327,10 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
                 ),
               ],
             ),
+            ],
+            )),
           ],
-        ))));
+        ));
   }
 
   bool is2ndOr4thSaturday(DateTime date) {
@@ -344,22 +344,21 @@ class _AttendanceCalendarState extends State<AttendanceCalendar> {
   }
 }
 
-class Choice {
-  const Choice({required this.title, required this.icon});
-
+class Choices {
+  const Choices({required this.title, required this.icon});
   final String title;
   final IconData icon;
 }
 
-const List<Choice> choices = <Choice>[
-  Choice(title: 'Total Present', icon: Icons.one_k),
-  Choice(title: 'Total Absent', icon: Icons.one_k),
-  Choice(title: 'Pending Leave', icon: Icons.one_k),
+List<Choices> choices = <Choices>[
+  Choices(title: "casual leave", icon: Icons.one_k),
+  Choices(title: 'Leave Without Pay', icon: Icons.one_k),
+  Choices(title: 'Sick Leave', icon: Icons.one_k),
 ];
 
 class SelectCard extends StatelessWidget {
   const SelectCard({Key? key, required this.choice}) : super(key: key);
-  final Choice choice;
+  final Choices choice;
 
   @override
   Widget build(BuildContext context) {

@@ -2,60 +2,65 @@ com.example.hrms.app-recyclerview-1.1.0-0 C:\Users\Prachi\.gradle\caches\transfo
 com.example.hrms.app-jetified-play-services-maps-18.1.0-1 C:\Users\Prachi\.gradle\caches\transforms-3\061a1db10415652663e9667522e74c74\transformed\jetified-play-services-maps-18.1.0\res
 com.example.hrms.app-jetified-activity-1.6.1-2 C:\Users\Prachi\.gradle\caches\transforms-3\14ea55225541322da6f9f9cc8dfdaaec\transformed\jetified-activity-1.6.1\res
 com.example.hrms.app-jetified-lifecycle-viewmodel-savedstate-2.5.1-3 C:\Users\Prachi\.gradle\caches\transforms-3\152f30cc19121ce82bcab0f191148d26\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\res
-com.example.hrms.app-jetified-viewpager2-1.0.0-4 C:\Users\Prachi\.gradle\caches\transforms-3\2ab4218dc8d676a5f8d626426338ff3c\transformed\jetified-viewpager2-1.0.0\res
-com.example.hrms.app-coordinatorlayout-1.1.0-5 C:\Users\Prachi\.gradle\caches\transforms-3\31f2173c9bd12c8e9ae9ab45fed30677\transformed\coordinatorlayout-1.1.0\res
-com.example.hrms.app-jetified-startup-runtime-1.0.0-6 C:\Users\Prachi\.gradle\caches\transforms-3\37d59c63bf3d627c7a47efbb919690d3\transformed\jetified-startup-runtime-1.0.0\res
-com.example.hrms.app-browser-1.4.0-7 C:\Users\Prachi\.gradle\caches\transforms-3\44e87513b92d367064af36bcf452d972\transformed\browser-1.4.0\res
-com.example.hrms.app-material-1.3.0-8 C:\Users\Prachi\.gradle\caches\transforms-3\46f807e8030e24ef898e12d73e00c2a5\transformed\material-1.3.0\res
-com.example.hrms.app-jetified-appcompat-resources-1.4.2-9 C:\Users\Prachi\.gradle\caches\transforms-3\522aea5e6efaae9bae86ac58a74339af\transformed\jetified-appcompat-resources-1.4.2\res
-com.example.hrms.app-jetified-annotation-experimental-1.3.0-10 C:\Users\Prachi\.gradle\caches\transforms-3\58b605fe279d2edf21ed3daf216e5691\transformed\jetified-annotation-experimental-1.3.0\res
-com.example.hrms.app-lifecycle-viewmodel-2.5.1-11 C:\Users\Prachi\.gradle\caches\transforms-3\58f8976b6204a457bed9e813ac73ea9b\transformed\lifecycle-viewmodel-2.5.1\res
-com.example.hrms.app-appcompat-1.4.2-12 C:\Users\Prachi\.gradle\caches\transforms-3\5d0319590b0753acc8efe09b0c780922\transformed\appcompat-1.4.2\res
-com.example.hrms.app-jetified-zxing-android-embedded-4.3.0-13 C:\Users\Prachi\.gradle\caches\transforms-3\5dc55ec298d59f896c42be9192a17a84\transformed\jetified-zxing-android-embedded-4.3.0\res
-com.example.hrms.app-jetified-window-java-1.0.0-beta04-14 C:\Users\Prachi\.gradle\caches\transforms-3\67e4667a382e7bb42afdc662ea81f3c1\transformed\jetified-window-java-1.0.0-beta04\res
-com.example.hrms.app-transition-1.2.0-15 C:\Users\Prachi\.gradle\caches\transforms-3\76bf7c6b4b97084fc33c1b5111ebec21\transformed\transition-1.2.0\res
-com.example.hrms.app-cardview-1.0.0-16 C:\Users\Prachi\.gradle\caches\transforms-3\7b19ec02f13ac9207492dff3e1679bfe\transformed\cardview-1.0.0\res
-com.example.hrms.app-fragment-1.3.6-17 C:\Users\Prachi\.gradle\caches\transforms-3\7ed049e56e9073c9fb9421a67826956f\transformed\fragment-1.3.6\res
-com.example.hrms.app-jetified-emoji2-1.0.0-18 C:\Users\Prachi\.gradle\caches\transforms-3\8a896cf4458ef159cfe87a508a3192bc\transformed\jetified-emoji2-1.0.0\res
-com.example.hrms.app-jetified-play-services-base-18.1.0-19 C:\Users\Prachi\.gradle\caches\transforms-3\9ac46b4f4cac67d3baa260df86acd633\transformed\jetified-play-services-base-18.1.0\res
-com.example.hrms.app-jetified-savedstate-1.2.0-20 C:\Users\Prachi\.gradle\caches\transforms-3\9ed621b01a61caed2b895d19cd1e7fb0\transformed\jetified-savedstate-1.2.0\res
-com.example.hrms.app-jetified-core-ktx-1.9.0-21 C:\Users\Prachi\.gradle\caches\transforms-3\9f74742814a4d6c87877cccb72880136\transformed\jetified-core-ktx-1.9.0\res
-com.example.hrms.app-jetified-firebase-common-20.3.2-22 C:\Users\Prachi\.gradle\caches\transforms-3\9f9b8e2a8657f0e8bc068fe9f3d0c409\transformed\jetified-firebase-common-20.3.2\res
-com.example.hrms.app-media-1.0.0-23 C:\Users\Prachi\.gradle\caches\transforms-3\a906d8f3c5c7b617adbef1dab1124de4\transformed\media-1.0.0\res
-com.example.hrms.app-jetified-window-1.0.0-beta04-24 C:\Users\Prachi\.gradle\caches\transforms-3\ad44c240ce808ce3ee76590508424038\transformed\jetified-window-1.0.0-beta04\res
-com.example.hrms.app-jetified-emoji2-views-helper-1.0.0-25 C:\Users\Prachi\.gradle\caches\transforms-3\ae5889c106385ff0bf4239f620ee8c1e\transformed\jetified-emoji2-views-helper-1.0.0\res
-com.example.hrms.app-jetified-lifecycle-process-2.4.0-26 C:\Users\Prachi\.gradle\caches\transforms-3\ccf48dc26efdaab54a12f46ede0d2683\transformed\jetified-lifecycle-process-2.4.0\res
-com.example.hrms.app-lifecycle-livedata-core-2.5.1-27 C:\Users\Prachi\.gradle\caches\transforms-3\d41e17f011d21751c71f09a7b97379e4\transformed\lifecycle-livedata-core-2.5.1\res
-com.example.hrms.app-lifecycle-runtime-2.5.1-28 C:\Users\Prachi\.gradle\caches\transforms-3\d71a9fbc6c0b99902d3989b203974708\transformed\lifecycle-runtime-2.5.1\res
-com.example.hrms.app-constraintlayout-2.0.1-29 C:\Users\Prachi\.gradle\caches\transforms-3\d97b46e74611566e7bd284eea4b09c58\transformed\constraintlayout-2.0.1\res
-com.example.hrms.app-core-1.9.0-30 C:\Users\Prachi\.gradle\caches\transforms-3\f0819b87d34cea1f316842c1a80a9a4f\transformed\core-1.9.0\res
-com.example.hrms.app-jetified-play-services-auth-20.5.0-31 C:\Users\Prachi\.gradle\caches\transforms-3\f95310b73584a7fa167075c942d1ba80\transformed\jetified-play-services-auth-20.5.0\res
-com.example.hrms.app-jetified-play-services-basement-18.2.0-32 C:\Users\Prachi\.gradle\caches\transforms-3\f9cf5386e7be06c0a9fea2572752b605\transformed\jetified-play-services-basement-18.2.0\res
-com.example.hrms.app-debug-33 C:\Users\Prachi\Documents\Sem 8\hrms\android\app\src\debug\res
-com.example.hrms.app-main-34 C:\Users\Prachi\Documents\Sem 8\hrms\android\app\src\main\res
-com.example.hrms.app-google-services-35 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\google-services\debug
-com.example.hrms.app-pngs-36 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\pngs\debug
-com.example.hrms.app-resValues-37 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\resValues\debug
-com.example.hrms.app-rs-38 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\rs\debug
-com.example.hrms.app-mergeDebugResources-39 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.hrms.app-mergeDebugResources-40 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.hrms.app-merged_res-41 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\merged_res\debug
-com.example.hrms.app-packaged_res-42 C:\Users\Prachi\Documents\Sem 8\hrms\build\cloud_firestore\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-43 C:\Users\Prachi\Documents\Sem 8\hrms\build\file_picker\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-44 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_auth\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-45 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_core\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-46 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_database\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-47 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_storage\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-48 C:\Users\Prachi\Documents\Sem 8\hrms\build\flutter_barcode_scanner\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-49 C:\Users\Prachi\Documents\Sem 8\hrms\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-50 C:\Users\Prachi\Documents\Sem 8\hrms\build\fluttertoast\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-51 C:\Users\Prachi\Documents\Sem 8\hrms\build\geolocator_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-52 C:\Users\Prachi\Documents\Sem 8\hrms\build\google_maps_flutter_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-53 C:\Users\Prachi\Documents\Sem 8\hrms\build\google_sign_in_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-54 C:\Users\Prachi\Documents\Sem 8\hrms\build\image_picker_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-55 C:\Users\Prachi\Documents\Sem 8\hrms\build\location\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-56 C:\Users\Prachi\Documents\Sem 8\hrms\build\path_provider_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-57 C:\Users\Prachi\Documents\Sem 8\hrms\build\qr_code_scanner\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-58 C:\Users\Prachi\Documents\Sem 8\hrms\build\shared_preferences_android\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-59 C:\Users\Prachi\Documents\Sem 8\hrms\build\sign_in_with_apple\intermediates\packaged_res\debug
-com.example.hrms.app-packaged_res-60 C:\Users\Prachi\Documents\Sem 8\hrms\build\url_launcher_android\intermediates\packaged_res\debug
+com.example.hrms.app-jetified-firebase-messaging-23.1.2-4 C:\Users\Prachi\.gradle\caches\transforms-3\1ac8508dcafdc521e2464559f853b95b\transformed\jetified-firebase-messaging-23.1.2\res
+com.example.hrms.app-jetified-viewpager2-1.0.0-5 C:\Users\Prachi\.gradle\caches\transforms-3\2ab4218dc8d676a5f8d626426338ff3c\transformed\jetified-viewpager2-1.0.0\res
+com.example.hrms.app-coordinatorlayout-1.1.0-6 C:\Users\Prachi\.gradle\caches\transforms-3\31f2173c9bd12c8e9ae9ab45fed30677\transformed\coordinatorlayout-1.1.0\res
+com.example.hrms.app-jetified-startup-runtime-1.0.0-7 C:\Users\Prachi\.gradle\caches\transforms-3\37d59c63bf3d627c7a47efbb919690d3\transformed\jetified-startup-runtime-1.0.0\res
+com.example.hrms.app-browser-1.4.0-8 C:\Users\Prachi\.gradle\caches\transforms-3\44e87513b92d367064af36bcf452d972\transformed\browser-1.4.0\res
+com.example.hrms.app-material-1.3.0-9 C:\Users\Prachi\.gradle\caches\transforms-3\46f807e8030e24ef898e12d73e00c2a5\transformed\material-1.3.0\res
+com.example.hrms.app-jetified-appcompat-resources-1.4.2-10 C:\Users\Prachi\.gradle\caches\transforms-3\522aea5e6efaae9bae86ac58a74339af\transformed\jetified-appcompat-resources-1.4.2\res
+com.example.hrms.app-jetified-annotation-experimental-1.3.0-11 C:\Users\Prachi\.gradle\caches\transforms-3\58b605fe279d2edf21ed3daf216e5691\transformed\jetified-annotation-experimental-1.3.0\res
+com.example.hrms.app-lifecycle-viewmodel-2.5.1-12 C:\Users\Prachi\.gradle\caches\transforms-3\58f8976b6204a457bed9e813ac73ea9b\transformed\lifecycle-viewmodel-2.5.1\res
+com.example.hrms.app-appcompat-1.4.2-13 C:\Users\Prachi\.gradle\caches\transforms-3\5d0319590b0753acc8efe09b0c780922\transformed\appcompat-1.4.2\res
+com.example.hrms.app-jetified-zxing-android-embedded-4.3.0-14 C:\Users\Prachi\.gradle\caches\transforms-3\5dc55ec298d59f896c42be9192a17a84\transformed\jetified-zxing-android-embedded-4.3.0\res
+com.example.hrms.app-jetified-window-java-1.0.0-beta04-15 C:\Users\Prachi\.gradle\caches\transforms-3\67e4667a382e7bb42afdc662ea81f3c1\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.hrms.app-transition-1.2.0-16 C:\Users\Prachi\.gradle\caches\transforms-3\76bf7c6b4b97084fc33c1b5111ebec21\transformed\transition-1.2.0\res
+com.example.hrms.app-cardview-1.0.0-17 C:\Users\Prachi\.gradle\caches\transforms-3\7b19ec02f13ac9207492dff3e1679bfe\transformed\cardview-1.0.0\res
+com.example.hrms.app-fragment-1.3.6-18 C:\Users\Prachi\.gradle\caches\transforms-3\7ed049e56e9073c9fb9421a67826956f\transformed\fragment-1.3.6\res
+com.example.hrms.app-jetified-emoji2-1.0.0-19 C:\Users\Prachi\.gradle\caches\transforms-3\8a896cf4458ef159cfe87a508a3192bc\transformed\jetified-emoji2-1.0.0\res
+com.example.hrms.app-jetified-play-services-base-18.1.0-20 C:\Users\Prachi\.gradle\caches\transforms-3\9ac46b4f4cac67d3baa260df86acd633\transformed\jetified-play-services-base-18.1.0\res
+com.example.hrms.app-jetified-savedstate-1.2.0-21 C:\Users\Prachi\.gradle\caches\transforms-3\9ed621b01a61caed2b895d19cd1e7fb0\transformed\jetified-savedstate-1.2.0\res
+com.example.hrms.app-jetified-core-ktx-1.9.0-22 C:\Users\Prachi\.gradle\caches\transforms-3\9f74742814a4d6c87877cccb72880136\transformed\jetified-core-ktx-1.9.0\res
+com.example.hrms.app-jetified-firebase-common-20.3.2-23 C:\Users\Prachi\.gradle\caches\transforms-3\9f9b8e2a8657f0e8bc068fe9f3d0c409\transformed\jetified-firebase-common-20.3.2\res
+com.example.hrms.app-media-1.0.0-24 C:\Users\Prachi\.gradle\caches\transforms-3\a906d8f3c5c7b617adbef1dab1124de4\transformed\media-1.0.0\res
+com.example.hrms.app-jetified-window-1.0.0-beta04-25 C:\Users\Prachi\.gradle\caches\transforms-3\ad44c240ce808ce3ee76590508424038\transformed\jetified-window-1.0.0-beta04\res
+com.example.hrms.app-jetified-emoji2-views-helper-1.0.0-26 C:\Users\Prachi\.gradle\caches\transforms-3\ae5889c106385ff0bf4239f620ee8c1e\transformed\jetified-emoji2-views-helper-1.0.0\res
+com.example.hrms.app-jetified-lifecycle-process-2.4.0-27 C:\Users\Prachi\.gradle\caches\transforms-3\ccf48dc26efdaab54a12f46ede0d2683\transformed\jetified-lifecycle-process-2.4.0\res
+com.example.hrms.app-lifecycle-livedata-core-2.5.1-28 C:\Users\Prachi\.gradle\caches\transforms-3\d41e17f011d21751c71f09a7b97379e4\transformed\lifecycle-livedata-core-2.5.1\res
+com.example.hrms.app-lifecycle-runtime-2.5.1-29 C:\Users\Prachi\.gradle\caches\transforms-3\d71a9fbc6c0b99902d3989b203974708\transformed\lifecycle-runtime-2.5.1\res
+com.example.hrms.app-constraintlayout-2.0.1-30 C:\Users\Prachi\.gradle\caches\transforms-3\d97b46e74611566e7bd284eea4b09c58\transformed\constraintlayout-2.0.1\res
+com.example.hrms.app-localbroadcastmanager-1.1.0-31 C:\Users\Prachi\.gradle\caches\transforms-3\ef8f2b089e68096e27a7210e1ddaf98a\transformed\localbroadcastmanager-1.1.0\res
+com.example.hrms.app-core-1.9.0-32 C:\Users\Prachi\.gradle\caches\transforms-3\f0819b87d34cea1f316842c1a80a9a4f\transformed\core-1.9.0\res
+com.example.hrms.app-jetified-play-services-auth-20.5.0-33 C:\Users\Prachi\.gradle\caches\transforms-3\f95310b73584a7fa167075c942d1ba80\transformed\jetified-play-services-auth-20.5.0\res
+com.example.hrms.app-jetified-play-services-basement-18.2.0-34 C:\Users\Prachi\.gradle\caches\transforms-3\f9cf5386e7be06c0a9fea2572752b605\transformed\jetified-play-services-basement-18.2.0\res
+com.example.hrms.app-debug-35 C:\Users\Prachi\Documents\Sem 8\hrms\android\app\src\debug\res
+com.example.hrms.app-main-36 C:\Users\Prachi\Documents\Sem 8\hrms\android\app\src\main\res
+com.example.hrms.app-google-services-37 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\google-services\debug
+com.example.hrms.app-pngs-38 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\pngs\debug
+com.example.hrms.app-resValues-39 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\resValues\debug
+com.example.hrms.app-rs-40 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\generated\res\rs\debug
+com.example.hrms.app-mergeDebugResources-41 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.hrms.app-mergeDebugResources-42 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.hrms.app-merged_res-43 C:\Users\Prachi\Documents\Sem 8\hrms\build\app\intermediates\merged_res\debug
+com.example.hrms.app-packaged_res-44 C:\Users\Prachi\Documents\Sem 8\hrms\build\cloud_firestore\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-45 C:\Users\Prachi\Documents\Sem 8\hrms\build\file_picker\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-46 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_auth\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-47 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_core\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-48 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_database\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-49 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_messaging\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-50 C:\Users\Prachi\Documents\Sem 8\hrms\build\firebase_storage\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-51 C:\Users\Prachi\Documents\Sem 8\hrms\build\flutter_barcode_scanner\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-52 C:\Users\Prachi\Documents\Sem 8\hrms\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-53 C:\Users\Prachi\Documents\Sem 8\hrms\build\fluttertoast\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-54 C:\Users\Prachi\Documents\Sem 8\hrms\build\geolocator_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-55 C:\Users\Prachi\Documents\Sem 8\hrms\build\google_maps_flutter_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-56 C:\Users\Prachi\Documents\Sem 8\hrms\build\google_sign_in_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-57 C:\Users\Prachi\Documents\Sem 8\hrms\build\image_picker_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-58 C:\Users\Prachi\Documents\Sem 8\hrms\build\location\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-59 C:\Users\Prachi\Documents\Sem 8\hrms\build\open_file\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-60 C:\Users\Prachi\Documents\Sem 8\hrms\build\path_provider_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-61 C:\Users\Prachi\Documents\Sem 8\hrms\build\printing\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-62 C:\Users\Prachi\Documents\Sem 8\hrms\build\qr_code_scanner\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-63 C:\Users\Prachi\Documents\Sem 8\hrms\build\shared_preferences_android\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-64 C:\Users\Prachi\Documents\Sem 8\hrms\build\sign_in_with_apple\intermediates\packaged_res\debug
+com.example.hrms.app-packaged_res-65 C:\Users\Prachi\Documents\Sem 8\hrms\build\url_launcher_android\intermediates\packaged_res\debug

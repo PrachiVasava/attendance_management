@@ -37,68 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final _formKey = GlobalKey<FormState>();
   bool _passwordError = false;
-  String? _errorMessage;
-
-  // void _showErrorDialog(String message) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Error'),
-  //         content: Text(message),
-  //         actions: [
-  //           TextButton(
-  //             child: Text('OK'),
-  //             onPressed: () => Navigator.of(context).pop(),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  // Future login() async {
-  //
-  //   if (_formKey.currentState!.validate()) {
-  //     _formKey.currentState?.save();
-  //     showDialog(
-  //         context: context,
-  //         builder: (context) {
-  //           return const Center(child: CircularProgressIndicator(),heightFactor: 50,widthFactor: 50,);
-  //         });
-  //     try {
-  //       await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //           email: _emailController.text.trim(),
-  //           password: _passController.text.trim());
-  //
-  //       Get.to(IndexHomeScreen());
-  //
-  //     } on FirebaseAuthException catch (e) {
-  //       print(e);
-  //       Navigator.of(context).pop();
-  //       showDialog(context: context, builder: (context){
-  //         return AlertDialog(content:Text(e.message.toString()) ,
-  //           actions: [
-  //             TextButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: Text('OK'),
-  //             ),
-  //           ],);
-  //       });
-  //     }
-  //   } else {
-  //     setState(() {
-  //       showDialog(
-  //           context: context,
-  //           builder: (context) {
-  //             return AlertDialog(content:Text("Please Enter Email id and password") ,);
-  //
-  //           });
-  //     });
-  //   }
-  // }
 
   @override
   void dispose() {
@@ -248,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         translation(context).forgot_password,
-                        style: TextStyle(color: AppColors.blue),
+                        style: TextStyle(color: AppColors.primary),
                       )),
                 ],
               ),
@@ -287,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Get.to(() => const RegisterUser());
                   },
                   child: Text(
-                    style: TextStyle(color: AppColors.blue, fontSize: 18),
+                    style: TextStyle(color: AppColors.primary, fontSize: 18),
                     translation(context).register_now,
                   ),
                 ),

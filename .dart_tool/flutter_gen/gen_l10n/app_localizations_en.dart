@@ -264,4 +264,91 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get attendance_regularization => 'Attendance Regularization';
+
+  @override
+  String get holiday => 'Holiday';
+
+  @override
+  String get absent => 'Absent';
+
+  @override
+  String get attendance_report => 'Attendance Report';
+
+  @override
+  String get download_pdf => 'Download PDF';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get check_in => 'Check-In';
+
+  @override
+  String get check_out => 'Check-Out';
+
+  @override
+  String get leave_type => 'Leave Type';
+
+  @override
+  String get casual_leave => 'Casual Leave';
+
+  @override
+  String get consolidated_leave => 'Consolidated Leave';
+
+  @override
+  String get leave_without_pay => 'Leave Without Pay';
+
+  @override
+  String get sick_leave => 'Sick Leave';
+
+  @override
+  String get start_date => 'Start Date';
+
+  @override
+  String get end_date => 'End Date';
+
+  @override
+  String get day_type => 'Day Type';
+
+  @override
+  String get first_half => 'First Half';
+
+  @override
+  String get second_half => 'Second Half';
+
+  @override
+  String get full_day => 'Full Day';
+
+  @override
+  String get reason_for_leave => 'Reason for Leave';
+
+  @override
+  String get no_attendance_data => 'No attendance data found for user.';
+
+  @override
+  String get something_went_wrong => 'Something went Wrong...';
+
+  @override
+  String get valid_mobile_no => 'Please Enter Valid Mobile Number.';
+
+  @override
+  String get leave_request_sent => 'Leave Request Sent Successfully.';
+
+  @override
+  String get ok => 'Ok';
+
+  @override
+  String get reason => 'Reason';
+
+  @override
+  String get leave_history => 'Leave History';
+
+  @override
+  String get not_in_office_location => 'User is not within the allowed distance from the office location.';
+
+  @override
+  String get user_checked_in => 'User Checked in Successfully.';
+
+  @override
+  String get user_checked_out => 'User Checked out Successfully.';
 }

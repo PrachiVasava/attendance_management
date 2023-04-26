@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-es-rUS/values-es-rUS.xml",
+            "outputFile": "com.example.hrms.app-mergeDebugResources-41:/values-es-rUS/values-es-rUS.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Prachi\\.gradle\\caches\\transforms-3\\9ac46b4f4cac67d3baa260df86acd633\\transformed\\jetified-play-services-base-18.1.0\\res\\values-es-rUS\\values.xml",

@@ -1,20 +1,17 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hrms/constant/language_constants.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart' hide LocationAccuracy;
 import 'package:lottie/lottie.dart' hide Marker;
-import 'package:provider/provider.dart';
 import '../Controller/Session_controller.dart';
-import '../Controller/profile_controller.dart';
-import 'package:provider/provider.dart';
 import '../constant/app_colors.dart';
 import '../constant/in_out_button.dart';
-import '../services/utils.dart';
+
 
 class AttendanceScreen extends StatefulWidget with ChangeNotifier{
 
@@ -41,11 +38,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     }
   }
   final _officeLocation = LocationData.fromMap({
-    "latitude": 22.5525,
-    "longitude": 72.9238,
+    "latitude": 22.553821,
+    "longitude":  72.923867,
   });
 
-  final _maxDistance = 150000;
+  final _maxDistance =6;
   // in meters
 
   @override
@@ -95,6 +92,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             "inTime": DateFormat.Hms().format(DateTime.now()),
             "status": status,
             "outTime": "",
+            "location":{
+              "latitude":_currentPosition!.latitude,
+              "longitude":_currentPosition!.longitude
+            }
         }).then((value) {
         showDialog(context: context, builder: (context) {
           return AlertDialog(
@@ -105,7 +106,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               fit: BoxFit.fill,
             ),
             title: Center(
-              child: Text(isCheckedIn ? 'User Checked in Successfully' : 'User Checked out Successfully',
+              child: Text(isCheckedIn ? translation(context).user_checked_in : translation(context).user_checked_out,
                   textAlign: TextAlign.center,
                 )),
             actions: [
@@ -113,7 +114,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('OK'),
+                child: Text(translation(context).ok),
               ),
             ],
           );
@@ -124,9 +125,30 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
         showDialog(
             context: context,
             builder: (context) {
-              return const AlertDialog(
-                  content: Text(
-                      "User is not within the allowed distance from the office location"));
+              return AlertDialog(
+                  content:  Lottie.asset(
+                    "assets/animation/not_within_location.json",
+                    width: 100,
+                    height: 250,
+                    fit: BoxFit.fill,
+                  ),
+                  title: Center(
+                    child: Text(
+                        translation(context).not_in_office_location,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 15,
+                      ),
+                    ),
+                  ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(translation(context).ok),
+                  ),
+                ],
+              );
             });
       }
     }
@@ -142,50 +164,84 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   void _markOutAttendanceUpdate(String status,String time) async {
     // Find the last attendance record for the user in the database
     // and update the "status" field to "out" and the "outTime" field to the current date and time.
-    final ref = FirebaseDatabase.instance.ref().child('attendance').child(SessionController().userId.toString()).child(date);
-    await ref.update({
-      'outTime': time,
-      'status': status,
-    }).then((value){
-      showDialog(context: context, builder: (context) {
-        return AlertDialog(
-          content: Lottie.asset(
-            "assets/animation/check_in.json",
-            width: 100,
-            height: 250,
-            fit: BoxFit.fill,
-          ),
-          title: Center(
-              child: Text(isCheckedIn ? 'User Checked in Successfully' : 'User Checked out Successfully',
-                textAlign: TextAlign.center,
-              )),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      });
 
-    }).onError((error, stackTrace){
-      showDialog(
-          context: context,
-          builder: (context) {
-            return const AlertDialog(
-                content: Text(
-                    "User is not within the allowed distance from the office location"));
+      if (_currentPosition != null) {
+        // Calculate the distance between the user's location and the office location
+        final distance = Geolocator.distanceBetween(
+          _officeLocation.latitude!,
+          _officeLocation.longitude!,
+          _currentPosition!.latitude,
+          _currentPosition!.longitude,
+        );
+        if (distance <= _maxDistance) {
+          final ref = FirebaseDatabase.instance.ref().child('attendance').child(
+              SessionController().userId.toString()).child(date);
+          await ref.update({
+            'outTime': time,
+            'status': status,
+          }).then((value) {
+            showDialog(context: context, builder: (context) {
+              return AlertDialog(
+                content: Lottie.asset(
+                  "assets/animation/check_in.json",
+                  width: 100,
+                  height: 250,
+                  fit: BoxFit.fill,
+                ),
+                title: Center(
+                    child: Text(isCheckedIn
+                        ? translation(context).user_checked_in
+                        : translation(context).user_checked_out,
+                      textAlign: TextAlign.center,
+                    )),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(translation(context).ok),
+                  ),
+                ],
+              );
+            });
           });
-        });
+        }
+        else {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Lottie.asset(
+                    "assets/animation/not_within_location.json",
+                    width: 100,
+                    height: 250,
+                    fit: BoxFit.fill,
+                  ),
+                  title: Center(
+                    child: Text(
+                      translation(context).not_in_office_location,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 15,
+                      ),
+                    ),
+                  ),
+                  actions: [TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(translation(context).ok),
+                  ),
+                  ],
+                );
+              });
+        }
+      };
   }
     Future<void> _markOutAttendance() async {
     setState(() {
       isCheckedIn = false;
     });
     _markOutAttendanceUpdate('Check-out',time);
-
   }
 
   Set<Polygon> _polygone = HashSet<Polygon>();
@@ -213,52 +269,71 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Mark Attendace".toUpperCase()),
+          title: Text(translation(context).attendance.toUpperCase()),
           backgroundColor: AppColors.primary,
           centerTitle: true,
         ),
-        body: Column(
-                  children: [
-                    Container(
-                      width: screenWidth,
-                      height: screenHeight / 1.5,
-                      padding: EdgeInsets.all(5),
-                      child: Card(
-                        elevation: 10,
-                        child: GoogleMap(
-                          markers: Set<Marker>.of(_markers),
-                          myLocationEnabled: true,
-                          initialCameraPosition: const CameraPosition(
-                              target: LatLng(22.553146, 72.923719),
-                              //Entrence
-                              zoom: 19),
-                          polygons: _polygone,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              inOutButton("IN", Colors.green, () {
-                                _markInAttendance();
-                              }),
-                              const Spacer(flex: 30),
-                              inOutButton("OUT", Colors.orangeAccent, () {
-                                _markOutAttendance();
-                              }),
-                            ],
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Image.asset(
+                'assets/images/background.jpg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+              ),
+              Column(
+                children: [
+                          Container(
+                            width: screenWidth,
+                            height: screenHeight / 1.5,
+                            child: Container(
+                              // decoration: BoxDecoration(
+                              //   border: Border.all(color: AppColors.primary),
+                              //   borderRadius: BorderRadius.all(Radius.circular(10))
+                              // ),
+                              child: Card(
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                elevation: 10,
+                                child: GoogleMap(
+                                  markers: Set<Marker>.of(_markers),
+                                  myLocationEnabled: true,
+                                  initialCameraPosition: const CameraPosition(
+                                      target: LatLng(22.553146, 72.923719),
+                                      //Entrence
+                                      zoom: 16.5),
+                                  polygons: _polygone,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(30.0),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    inOutButton("IN", Colors.green, () {
+                                      _markInAttendance();
+                                    }),
+                                    const Spacer(flex: 30),
+                                    inOutButton("OUT", Colors.orangeAccent, () {
+                                      _markOutAttendance();
+                                    }),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
+            ],
+          ),
+        ),
 
               );
   }
+
 }

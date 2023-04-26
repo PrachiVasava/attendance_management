@@ -32,8 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final DatabaseReference inRef = FirebaseDatabase.instance.ref("users");
   final DatabaseReference outRef = FirebaseDatabase.instance.ref("users");
 
-
-
   @override
   Widget build(BuildContext context) {
     screenWidth = MediaQuery.of(context).size.width;
@@ -81,30 +79,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: ChangeNotifierProvider(
-            create: (_) => ProfileController(),
-            child: Consumer<ProfileController>(
-              builder: (context, provider, child) {
-                return SafeArea(
-                    child: StreamBuilder(
-                  stream:
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Image.asset(
+                'assets/images/background.jpg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+              ),
+              ChangeNotifierProvider(
+                create: (_) => ProfileController(),
+                child: Consumer<ProfileController>(
+                  builder: (context, provider, child) {
+                    return StreamBuilder(
+                      stream:
                       inRef.child(SessionController().userId.toString()).onValue,
-                builder: (context, AsyncSnapshot snapshot) {
-                  if (snapshot.data.snapshot.value == null) {
-                    return Container(
-                      width: screenWidth,
-                      height: screenHeight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text("No attendance data found for user".toUpperCase(),style: TextStyle(fontSize: 20,),textAlign: TextAlign.center),
-                        ],
-                      ),
-                    );
-                  }
-                  if(!snapshot.hasData){
+                    builder: (context, AsyncSnapshot snapshot) {
+
+                      if(!snapshot.hasData){
                     return Container(
                       width: screenWidth,
                       height: screenHeight,
@@ -116,8 +109,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     );
-                  }
-                  else if (snapshot.hasData) {
+                      }
+                      else if (snapshot.hasData) {
                       Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
                       return Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -147,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               ? map['image'].toString() == ""
                                                   ? Icon(
                                                       Icons.person,
-                                                      color: AppColors.primary,
+                                                      color: AppColors.black,
                                                       size: 100,
                                                     )
                                                   : Image(
@@ -171,7 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           child: Icon(
                                                             Icons.person,
                                                             color: AppColors
-                                                                .primary,
+                                                                .black,
                                                             size: 100,
                                                           ),
                                                         );
@@ -217,63 +210,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Column(
                                 children: [
                                   RowWidget(
-                                      title: "Username",
+                                      title: translation(context).username,
                                       iconData: Icons.person,
                                       value: map['username'] == ""
                                           ? "xxxxxxxxx"
                                           : map['username']),
                                   RowWidget(
-                                      title: "Mobile Number",
+                                      title: translation(context).mobile_no,
                                       iconData: Icons.phone_android,
                                       value: map['mobile'] == ""
                                           ? "xxx-xxx-xxxx"
                                           : map['mobile']),
                                   RowWidget(
-                                      title: "Email",
+                                      title: translation(context).email,
                                       iconData: Icons.email,
                                       value: map['email'] == ""
                                           ? "xxxxx@xxx.xxx"
                                           : map['email']),
-                                  // Column(children: [
-                                  //   ListTile(
-                                  //       title: Text("BirthDate"),
-                                  //       leading: IconButton(
-                                  //         icon: Icon( Icons.calendar_month_rounded),
-                                  //         onPressed: () async {
-                                  //     DateTime? pickedDate =
-                                  //         await showDatePicker(
-                                  //       context: context,
-                                  //       initialDate: DateTime.now(),
-                                  //       firstDate: DateTime(1900),
-                                  //       lastDate: DateTime.now(),
-                                  //     );
-                                  //     if (pickedDate != null) {
-                                  //       String formattedDate =
-                                  //           DateFormat('dd-MM-yyyy')
-                                  //               .format(pickedDate);
-                                  //       setState(() {
-                                  //         dobController.text = formattedDate;
-                                  //       });
-                                  //     }
-                                  //   },
-                                  //         color: AppColors.primary,
-                                  //       ),
-                                  //       trailing: Text(map['dob'] == " "
-                                  //           ? "xx/xxxx/xxxx"
-                                  //           : map['dob'])),
-                                  //   Divider(
-                                  //     color:
-                                  //         AppColors.primary.withOpacity(0.4),
-                                  //     indent: 10,
-                                  //     endIndent: 10,
-                                  //   )
-                                  // ]),
-                                  // RowWidget(
-                                  //     title: "Birthdate",
-                                  //     iconData: Icons.calendar_month_rounded,
-                                  //     value: map['dob']== " "
-                                  //         ? "xx/xxxx/xxxx"
-                                  //         : map['dob']),
                                 ],
                               ),
                             ),
@@ -304,17 +257,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ]);
-                    } else {
+                    }
+                      else if (snapshot.data.snapshot.value == null) {
+                    return Stack(
+                      children: [
+                        Image.asset(
+                          'assets/images/background.jpg',
+                          fit: BoxFit.cover,
+                          height: double.infinity,
+                          width: double.infinity,
+                        ),
+                        Container(
+                          width: screenWidth,
+                          height: screenHeight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(translation(context).no_attendance_data.toUpperCase(),style: TextStyle(fontSize: 20,),textAlign: TextAlign.center),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                      }
+
+                      else {
                       return Center(
                           child: Text(
-                        "Something went Wrong",
+                            translation(context).something_went_wrong,
                         style: Theme.of(context).textTheme.titleMedium,
                       ));
                     }
+                      },
+                    );
                   },
-                ));
-              },
-            ),
+                ),
+              ),
+            ],
           ),
         ));
   }

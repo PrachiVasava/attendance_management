@@ -71,342 +71,369 @@ class _LeaveRequestState extends State<LeaveRequest> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: CustomAppBar(
-          title: 'Leave Request',
-        ),
-        body: ChangeNotifierProvider(
-            create: (_) => LeaveController(),
-            child: Consumer<LeaveController>(
-                builder: (context, provider, child) {
-              return SafeArea(
-                  child: SingleChildScrollView(
-                child: Column(children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      key: _formKey,
-                      child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(children: [
-                            DropDownTextField(
-                              controller: leaveTypeController,
-                              textFieldFocusNode: leaveTypeFocusNode,
-                              autovalidateMode: leaveTypeFocusNode.hasFocus
-                                  ? AutovalidateMode.always
-                                  : AutovalidateMode.disabled,
-                              dropDownItemCount: 4,
-                              dropDownList: const [
-                                DropDownValueModel(
-                                    name: 'Casual Leave',
-                                    value: "Casual Leave"
-                                ),
-                                DropDownValueModel(
-                                  name: 'Consolidated Leave',
-                                  value: "Consolidated Leave",
-                                ),
-                                DropDownValueModel(
-                                    name: 'Leave Without Pay',
-                                    value: "Leave Without Pay"),
-                                DropDownValueModel(
-                                    name: 'Sick Leave', value: "Sick Leave"),
-                              ],
-                              onChanged: (value) {},
-                              textFieldDecoration: InputDecoration(
-                                enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 1),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: AppColors.primary, width: 2),
-                                ),
-                                labelText: "Leave Type",
-                                labelStyle: TextStyle(color: AppColors.primary),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Required field";
-                                } else {
-                                  return null;
-                                }
-                              },
-                            ), //leave pay
-                            const SizedBox(
-                              height: 10,
+        appBar: CustomAppBar(),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Image.asset(
+                'assets/images/background.jpg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+              ),
+              ChangeNotifierProvider(
+                  create: (_) => LeaveController(),
+                  child: Consumer<LeaveController>(
+                      builder: (context, provider, child) {
+                    return SafeArea(
+                        child: SingleChildScrollView(
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: Text(
+                              translation(context).leave_request.toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              color: AppColors.white
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: 100,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    width: 5,
-                                  ),
-                                  Expanded(
-                                      child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      TextFormField(
-                                        controller: _startDateController,
-                                        focusNode: startDateFocusNode,
-                                        autovalidateMode:
-                                            startDateFocusNode.hasFocus
-                                                ? AutovalidateMode.always
-                                                : AutovalidateMode.disabled,
-                                        decoration: InputDecoration(
-                                          icon: Icon(
-                                            Icons.calendar_month,
-                                            color: AppColors.primary,
-                                            size: 30,
-                                          ),
-                                          labelText: "Start Date",
-                                        ),
-                                        showCursor: false,
-                                        readOnly: true,
-                                        onTap: () async {
-                                          onSelected();
-                                        },
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return "Required field";
-                                          } else {
-                                            return null;
-                                          }
-                                        },
-                                      )
-                                    ],
-                                  )),
-                                  Container(
-                                    width: 5,
-                                  ),
-                                  Expanded(
-                                      child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 5,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Form(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            key: _formKey,
+                            child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Column(children: [
+                                  DropDownTextField(
+                                    controller: leaveTypeController,
+                                    textFieldFocusNode: leaveTypeFocusNode,
+                                    autovalidateMode: leaveTypeFocusNode.hasFocus
+                                        ? AutovalidateMode.always
+                                        : AutovalidateMode.disabled,
+                                    dropDownItemCount: 4,
+                                    dropDownList: [
+                                      DropDownValueModel(
+                                          name: translation(context).casual_leave,
+                                          value: translation(context).casual_leave
                                       ),
-                                      Expanded(
-                                          child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
+                                      DropDownValueModel(
+                                        name: translation(context).consolidated_leave,
+                                        value: translation(context).consolidated_leave,
+                                      ),
+                                      DropDownValueModel(
+                                          name: translation(context).leave_without_pay,
+                                          value: translation(context).leave_without_pay),
+                                      DropDownValueModel(
+                                          name: translation(context).sick_leave,
+                                          value: translation(context).sick_leave),
+                                    ],
+                                    onChanged: (value) {},
+                                    textFieldDecoration: InputDecoration(
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(width: 1),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: AppColors.primary, width: 2),
+                                      ),
+                                      labelText: translation(context).leave_type,
+                                      labelStyle: TextStyle(color: AppColors.primary),
+                                    ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return translation(context).required_field;
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ), //leave pay
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 100,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: 5,
+                                        ),
+                                        Expanded(
+                                            child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
                                             TextFormField(
-                                              controller: _endDateController,
-                                              focusNode: endDateFocusNode,
-                                              autovalidateMode: endDateFocusNode
-                                                      .hasFocus
-                                                  ? AutovalidateMode.always
-                                                  : AutovalidateMode.disabled,
+                                              controller: _startDateController,
+                                              focusNode: startDateFocusNode,
+                                              autovalidateMode:
+                                                  startDateFocusNode.hasFocus
+                                                      ? AutovalidateMode.always
+                                                      : AutovalidateMode.disabled,
                                               decoration: InputDecoration(
                                                 icon: Icon(
                                                   Icons.calendar_month,
                                                   color: AppColors.primary,
                                                   size: 30,
                                                 ),
-                                                labelText: "End Date",
-                                                errorText: _endDateError
-                                                    ? translation(context)
-                                                        .please_select_date
-                                                    : null,
+                                                labelText: translation(context).start_date,
+                                                labelStyle: TextStyle(color: AppColors.primary)
                                               ),
                                               showCursor: false,
                                               readOnly: true,
                                               onTap: () async {
                                                 onSelected();
-                                                //onSelected();
                                               },
                                               validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  return "Required field";
+                                                if (value == null || value.isEmpty) {
+                                                  return translation(context).required_field;
                                                 } else {
                                                   return null;
                                                 }
                                               },
                                             )
-                                          ])),
-                                      Container(
-                                        width: 5,
-                                      ),
-                                    ],
-                                  )),
-                                ],
-                              ),
-                            ), //start dat & end date
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              width: screenWidth,
-                              height: 60,
-                              child: DropDownTextField(
-                                controller: dayTypeController,
-                                textFieldFocusNode: dayTypeFocusNode,
-                                autovalidateMode: dayTypeFocusNode.hasFocus
-                                    ? AutovalidateMode.always
-                                    : AutovalidateMode.disabled,
-                                textFieldDecoration: InputDecoration(
-                                    enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(width: 1),
-                                    ),
-                                    focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.blueAccent, width: 2),
-                                    ),
-                                    labelText: "Day Type",
-                                    labelStyle:
-                                        TextStyle(color: AppColors.primary)),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return "Required field";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                dropDownItemCount: 3,
-                                dropDownList: const [
-                                  DropDownValueModel(
-                                      name: 'First Half', value: "First Half"),
-                                  DropDownValueModel(
-                                    name: 'Second Half',
-                                    value: "Second Half",
-                                  ),
-                                  DropDownValueModel(
-                                      name: 'Full Day', value: "Full Day"),
-                                ],
-                                onChanged: (val) {},
-                              ),
-                            ), //day type
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            TextFormField(
-                              controller: reasonController,
-                              focusNode: reasonFocusNode,
-                              autovalidateMode: reasonFocusNode.hasFocus
-                                  ? AutovalidateMode.always
-                                  : AutovalidateMode.disabled,
-                              maxLines: 3,
-                              decoration: InputDecoration(
-                                  enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(width: 1),
-                                  ),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.blueAccent, width: 2),
-                                  ),
-                                  labelText: "Reason for Leave",
-                                  labelStyle:
-                                      TextStyle(color: AppColors.primary)),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Required field";
-                                } else {
-                                  return null;
-                                }
-                              },
-                            ), //reasons for leave
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            TextFormField(
-                              controller: mobileController,
-                              focusNode: mobileFocusNode,
-                              autovalidateMode: startDateFocusNode.hasFocus
-                                  ? AutovalidateMode.always
-                                  : AutovalidateMode.disabled,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                  enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(width: 1),
-                                  ),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.blueAccent, width: 2),
-                                  ),
-                                  labelText: "Mobile Number",
-                                  labelStyle:
-                                      TextStyle(color: AppColors.primary),
-                                  prefixIcon: Icon(
-                                    Icons.phone,
-                                    color: AppColors.primary,
-                                  )),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Required field";
-                                }
-                                if (value.length < 10) {
-                                  return "Please Enter Valid Mobile Number";
-                                } else {
-                                  return null;
-                                }
-                              },
-                            ), //mobile number
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            ButtonWidget(
-                                text: "Submit",
-                                color: AppColors.primary,
-                                onClicked: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    provider.leaveRequest(
-                                        leaveTypeController.dropDownValue!.name,
-                                        _startDateController.text.toString(),
-                                        _endDateController.text.toString(),
-                                        dayTypeController.dropDownValue!.name,
-                                      reasonController.text.toString(),
-                                      mobileController.text.toString()
-                                    );
-                                    showDialog(context: context, builder: (context) {
-                                      return AlertDialog(
-                                        content: Lottie.asset(
-                                          "assets/animation/leave_request.json",
-                                          width: 100,
-                                          height: 250,
-                                          fit: BoxFit.fill,
+                                          ],
+                                        )),
+                                        Container(
+                                          width: 5,
                                         ),
-                                        title: const Center(
-                                            child: Text("Leave Request Sent Successfully ",
-                                              textAlign: TextAlign.center,
-                                            )),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {
-                                              });
-                                              _formKey.currentState!.reset();
-                                              leaveTypeController.clearDropDown();
-                                              _startDateController.clear();
-                                              _endDateController.clear();
-                                              dayTypeController.clearDropDown();
-                                              reasonController.clear();
-                                              mobileController.clear();
-                                              Navigator.pop(context);
-                                              },
-                                            child: Text('OK'),
-                                          ),
-                                        ],
-                                      );
-                                    }).then((value) {
+                                        Expanded(
+                                            child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: 5,
+                                            ),
+                                            Expanded(
+                                                child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.center,
+                                                    children: [
+                                                  TextFormField(
+                                                    controller: _endDateController,
+                                                    focusNode: endDateFocusNode,
+                                                    autovalidateMode: endDateFocusNode
+                                                            .hasFocus
+                                                        ? AutovalidateMode.always
+                                                        : AutovalidateMode.disabled,
+                                                    decoration: InputDecoration(
+                                                      icon: Icon(
+                                                        Icons.calendar_month,
+                                                        color: AppColors.primary,
+                                                        size: 30,
+                                                      ),
+                                                      labelText: translation(context).end_date,
+                                                        labelStyle: TextStyle(color: AppColors.primary),
 
-                                    });
-                                  }
-                                })
-                          ])))
-                ]),
-              ));
-            })));
+                                                        errorText: _endDateError
+                                                          ? translation(context)
+                                                              .please_select_date
+                                                          : null,
+                                                    ),
+                                                    showCursor: false,
+                                                    readOnly: true,
+                                                    onTap: () async {
+                                                      onSelected();
+                                                      //onSelected();
+                                                    },
+                                                    validator: (value) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
+                                                        return translation(context).required_field;
+                                                      } else {
+                                                        return null;
+                                                      }
+                                                    },
+                                                  )
+                                                ])),
+                                            Container(
+                                              width: 5,
+                                            ),
+                                          ],
+                                        )),
+                                      ],
+                                    ),
+                                  ), //start dat & end date
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    width: screenWidth,
+                                    height: 60,
+                                    child: DropDownTextField(
+                                      controller: dayTypeController,
+                                      textFieldFocusNode: dayTypeFocusNode,
+                                      autovalidateMode: dayTypeFocusNode.hasFocus
+                                          ? AutovalidateMode.always
+                                          : AutovalidateMode.disabled,
+                                      textFieldDecoration: InputDecoration(
+                                          enabledBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(width: 1),
+                                          ),
+                                          focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.blueAccent, width: 2),
+                                          ),
+                                          labelText: translation(context).day_type,
+                                          labelStyle:
+                                              TextStyle(color: AppColors.primary)),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return translation(context).required_field;
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      dropDownItemCount: 3,
+                                      dropDownList:  [
+                                        DropDownValueModel(
+                                            name: translation(context).first_half,
+                                            value: translation(context).first_half),
+                                        DropDownValueModel(
+                                          name: translation(context).second_half,
+                                          value: translation(context).second_half,
+                                        ),
+                                        DropDownValueModel(
+                                            name: translation(context).full_day, value: translation(context).full_day),
+                                      ],
+                                      onChanged: (val) {},
+                                    ),
+                                  ), //day type
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  TextFormField(
+                                    controller: reasonController,
+                                    focusNode: reasonFocusNode,
+                                    autovalidateMode: reasonFocusNode.hasFocus
+                                        ? AutovalidateMode.always
+                                        : AutovalidateMode.disabled,
+                                    maxLines: 3,
+                                    decoration: InputDecoration(
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(width: 1),
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.blueAccent, width: 2),
+                                        ),
+                                        labelText: translation(context).reason_for_leave,
+                                        labelStyle:
+                                            TextStyle(color: AppColors.primary)),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return translation(context).required_field;
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ), //reasons for leave
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  TextFormField(
+                                    controller: mobileController,
+                                    focusNode: mobileFocusNode,
+                                    autovalidateMode: startDateFocusNode.hasFocus
+                                        ? AutovalidateMode.always
+                                        : AutovalidateMode.disabled,
+                                    keyboardType: TextInputType.phone,
+                                    decoration: InputDecoration(
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(width: 1),
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.blueAccent, width: 2),
+                                        ),
+                                        labelText: translation(context).mobile_no,
+                                        labelStyle:
+                                            TextStyle(color: AppColors.primary),
+                                        prefixIcon: Icon(
+                                          Icons.phone,
+                                          color: AppColors.primary,
+                                        )),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return translation(context).required_field;
+                                      }
+                                      if (value.length < 10) {
+                                        return translation(context).valid_mobile_no;
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ), //mobile number
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  ButtonWidget(
+                                      text: translation(context).submit,
+                                      color: AppColors.primary,
+                                      onClicked: () {
+                                        if (_formKey.currentState!.validate()) {
+                                          provider.leaveRequest(
+                                              leaveTypeController.dropDownValue!.name,
+                                              _startDateController.text.toString(),
+                                              _endDateController.text.toString(),
+                                              dayTypeController.dropDownValue!.name,
+                                            reasonController.text.toString(),
+                                            mobileController.text.toString()
+                                          );
+                                          showDialog(context: context, builder: (context) {
+                                            return AlertDialog(
+                                              content: Lottie.asset(
+                                                "assets/animation/leave_request.json",
+                                                width: 100,
+                                                height: 250,
+                                                fit: BoxFit.fill,
+                                              ),
+                                              title: Center(
+                                                  child: Text(translation(context).leave_request_sent,
+                                                    textAlign: TextAlign.center,
+                                                  )),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                    });
+                                                    _formKey.currentState!.reset();
+                                                    leaveTypeController.clearDropDown();
+                                                    _startDateController.clear();
+                                                    _endDateController.clear();
+                                                    dayTypeController.clearDropDown();
+                                                    reasonController.clear();
+                                                    mobileController.clear();
+                                                    Navigator.pop(context);
+                                                    },
+                                                  child: Text(translation(context).ok),
+                                                ),
+                                              ],
+                                            );
+                                          }).then((value) {
+
+                                          });
+                                        }
+                                      })
+                                ])))
+                      ]),
+                    ));
+                  })),
+            ],
+          ),
+        ));
   }
 
   Future<void> onSelected() async {

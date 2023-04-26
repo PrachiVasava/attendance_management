@@ -32,9 +32,7 @@ class ItemList extends StatelessWidget {
     screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: CustomAppBar(
-        title: translation(context).item_list,
-      ),
+      appBar: CustomAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),

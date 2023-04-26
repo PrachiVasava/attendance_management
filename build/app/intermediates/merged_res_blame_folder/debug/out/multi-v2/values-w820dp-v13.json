@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrms.app-mergeDebugResources-39:/values-w820dp-v13/values-w820dp-v13.xml",
+            "outputFile": "com.example.hrms.app-mergeDebugResources-41:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Prachi\\Documents\\Sem 8\\hrms\\build\\flutter_barcode_scanner\\intermediates\\packaged_res\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",

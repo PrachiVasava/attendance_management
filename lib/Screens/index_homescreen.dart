@@ -38,63 +38,73 @@ class _IndexHomeScreenState extends State<IndexHomeScreen> {
           children: [HomeScreen(),AttendanceScreen(), ProfileScreen(),],
         ),
         bottomNavigationBar:
-        Container(
-          height: 60,
-          margin: const EdgeInsets.only(left: 12, right: 13, bottom: 24),
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black87, blurRadius: 5, offset: Offset(2, 2))
-              ]),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (int i = 0; i < navigationIcons.length; i++) ...<Expanded>{
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = i;
-                          });
-                        },
-                        child: Container(
-                          height: screenHeight,
-                          width: screenWidth,
-                          color: Colors.white,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  navigationIcons[i],
-                                  color: i == currentIndex
-                                      ? AppColors.primary
-                                      : Colors.black,
-                                  size: i == currentIndex ? 28 : 25,
+
+        Stack(
+          children: [
+            Image.asset(
+              'assets/images/bottomImage.jpg',
+              fit: BoxFit.cover,
+              height: 80,
+            ),
+            Container(
+              height: 60,
+              margin: const EdgeInsets.only(left: 12, right: 13),
+              decoration:  const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black87, blurRadius: 5, offset: Offset(2, 2))
+                  ]),
+              child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (int i = 0; i < navigationIcons.length; i++) ...<Expanded>{
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                currentIndex = i;
+                              });
+                            },
+                            child: Container(
+                              height: screenHeight,
+                              width: screenWidth,
+                              color: Colors.white,
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      navigationIcons[i],
+                                      color: i == currentIndex
+                                          ? AppColors.primary
+                                          : Colors.black,
+                                      size: i == currentIndex ? 28 : 25,
+                                    ),
+                                    i == currentIndex ? Container(
+                                      alignment: Alignment.center,
+                                      margin: const EdgeInsets.only(top: 5,left: 4,right: 2),
+                                      height: 3,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          color: AppColors.primary),
+                                    ) : const SizedBox()
+                                  ],
                                 ),
-                                i == currentIndex ? Container(
-                                  alignment: Alignment.center,
-                                  margin: const EdgeInsets.only(top: 5,left: 4,right: 2),
-                                  height: 3,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      color: AppColors.primary),
-                                ) : const SizedBox()
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    )
-                  },
-                ],
-              )),
+                        )
+                      },
+                    ],
+                  )),
+            ),
+          ],
         ),
       ),
     );

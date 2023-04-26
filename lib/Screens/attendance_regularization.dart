@@ -49,8 +49,7 @@ class _AttendanceRegularizationState extends State<AttendanceRegularization> {
     screenWidth = MediaQuery.of(context).size.width;
   screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Regularization',),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: SizedBox(
           height: screenHeight ,

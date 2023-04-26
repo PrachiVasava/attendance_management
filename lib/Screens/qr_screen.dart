@@ -51,7 +51,6 @@ class _QrScreenState extends State<QrScreen> {
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: CustomAppBar(
-        title: translation(context).qr_code,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
